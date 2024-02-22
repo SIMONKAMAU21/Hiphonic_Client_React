@@ -63,7 +63,7 @@ const Videos = () => {
             <div className="video-container">
               <div className="video12">
                 <div className="image">
-                  <img src={video1} alt="" />
+                  <img src={video1} alt= "video" />
                 </div>
                 <div className="music-text">
                   <p>family</p>
