@@ -3,14 +3,17 @@
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(1, 1fr);
   overflow-x: hidden;
+
   height: 100%;
   .event-card {
     background: #ffffff;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 20px;
     border-radius: 10px;
     width: 379px;
+
     margin: 10px 10px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
     height: 481px;
@@ -24,15 +27,13 @@
       button {
         width: 100%;
         height: 48px;
-        margin-bottom: 1rem;
+        margin-top: 1rem;
         border-radius: 10px;
-        background-color: #f3f3f3;
+        background-color: #f8f8f8;
         color: #2563eb;
         font-size: 14px;
         font-weight: 700;
         border: none;
-        cursor: pointer;
-        
       }
 
       .img-logo {
@@ -52,6 +53,7 @@
         }
       }
     }
+
     .sk-txt {
       display: flex;
       flex-direction: row;
@@ -59,8 +61,8 @@
       width: 100%;
       color: #94a3b8;
       margin-top: 1rem;
-      font-size: 14px;
-      justify-content: flex-start;
+      font-size: 12px;
+
       img {
         padding-left: -20px;
         border-radius: 50%;
@@ -68,6 +70,7 @@
         height: 40px;
       }
     }
+
     .by-date {
       display: flex;
       flex-direction: row;
@@ -75,31 +78,75 @@
       width: 100%;
       height: 41px;
       justify-content: space-between;
-      font-size: 12px;
+      font-size: 14px;
       background-color: white;
-      color: #64748b;
       align-items: center;
+      overflow: hidden;
       border-radius: 10px;
       .title-by {
         margin: 10px 10px;
-        height: 41px;
-        align-items: center;
-        width: 100px;
-        line-height: 1px;
+        display: flex;
+        flex-direction: column;
         font-size: 12px;
+        color: #64748b;
         line-height: 1px;
+
+        h3 {
+          color: black;
+        }
+
         img {
           width: 20px;
           height: 20px;
         }
       }
     }
+
     .event-image {
-      width: 98%;
-      margin: 10px 10px;
+      width: 100%;
+
       img {
-        width: 100%;
+        max-width: 100%;
+        max-width: 95vh;
         border-radius: 10px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 1024px) {
+  .Eventscontainer {
+    border: 2px solid red;
+    .event-card {
+      border: 2px solid black;
+      height: 465px;
+      width: 308px;
+
+      .event-image {
+        border: 2px solid red;
+
+        img {
+          height: 160px;
+          width: 260px;
+        }
+      }
+      .by-date {
+        width: 100%;
+
+        display: flex;
+        align-items: center;
+
+        line-height: 1px;
+        .title-by {
+          border: 2px solid red;
+          width: 119px;
+
+          line-height: 1px;
+
+          p {
+            font-size: 10px;
+            font-weight: 500;
+          }
+        }
       }
     }
   }
