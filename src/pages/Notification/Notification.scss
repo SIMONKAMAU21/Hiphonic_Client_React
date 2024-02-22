@@ -1,0 +1,122 @@
+.notification-wrapper{
+    // border:2px solid red;
+    width:40px;
+    position: fixed;
+    // border: 2px solid #fff;
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 2px solid black;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding:0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    // z-index:  10;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    
+    .notification-content-container{
+        margin:1rem;
+        background-color: white;
+        width: 30%;
+        height:90%;
+        border-radius: 1rem;
+        padding:0.5rem;
+
+        .title-bar{
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 0.5px solid gray;
+
+            .notification-title{
+                font-size: large;
+                font-weight: 700;
+               
+            }
+
+
+        }
+        
+        .notification-menu{
+            display :flex;
+            // background-color: yellow;
+            justify-content: flex-start;
+            gap:4px;
+
+            span{
+                font-size:12px;
+                color:rgb(87, 87, 223);
+                padding:2px;
+                margin:4px;
+                background-color: #eff6ff;
+                border-radius: 5px;
+
+            }
+            span:nth(1){
+                font-weight:bold;
+            }
+            
+
+
+        }
+
+        .notifications-content{
+            display: flex;
+            flex-direction:column;
+            overflow: scroll;
+            gap:1rem;               
+             .notifications{
+                    display: flex;
+                    justify-content: space-evenly;
+                    gap:10rem;
+                    .user-wrapper{
+                        display: flex;
+
+                        img{
+                            width:40px;
+                            height:40px;
+                        }
+    
+                        .names{
+                            display: flex;
+                            flex-direction: column;
+                            .username{
+                                font-size: 14px;
+                                font-weight:700;
+                            }
+                            span{
+                                font-size: 12px;
+                            }
+                        }
+                    }
+
+                    
+
+                    .time{
+                        font-size: 14px;
+                        // margin-left:15rem;
+                    }
+                }
+        }
+        h3{
+            color:#d9dbdf
+        }
+
+        
+
+    }
+
+
+    @media (max-width:1024px) {
+         width:100vw;
+        
+        
+    }
+       
+
+
+    
+}

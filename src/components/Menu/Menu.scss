@@ -1,0 +1,33 @@
+.menu-container{
+    width:15vw;
+    display:flex;
+    flex-direction:column;
+    margin-top:2rem;
+    // justify-content: ;
+    align-items: flex-start;
+    margin-left:1rem;
+   
+
+    h3{
+        color:rgba(121, 121, 121,0.6);
+    }
+
+    .menu-item{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        column-gap:5px;
+        margin-top:20px;
+
+        img{
+            width:22px;
+            height:22px;
+        }
+        span{
+            color:rgb(117, 117, 117)
+        }
+    }
+
+    
+ }
+ 
