@@ -20,6 +20,9 @@ dependencies:
   sass:
     specifier: ^1.71.1
     version: 1.71.1
+  sass:
+    specifier: ^1.71.1
+    version: 1.71.1
 
 devDependencies:
   '@types/react':
