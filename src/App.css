@@ -1,9 +1,17 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+ 
+  /* margin: 0 auto; */
+  /* padding: 2rem; */
+  /* background-color: black; */
   text-align: center;
+
 }
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding:0;
+}
+/*
 
 .logo {
   height: 6em;
@@ -39,4 +47,10 @@
 
 .read-the-docs {
   color: #888;
+} */
+
+
+
+*::-webkit-scrollbar {
+  display: none;
 }
