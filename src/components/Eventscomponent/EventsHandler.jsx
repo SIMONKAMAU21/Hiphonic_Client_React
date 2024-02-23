@@ -1,14 +1,16 @@
 
-import map from "../assets/40px.png";
-import user3 from "../assets/user3.png";
-import calendar from "../assets/calendar.png";
+// import map from "../assets/40px.png";
+import map from "../../assets/40px.png"
+// import user3 from "../assets/user3.png";
+import user3 from "../../assets/User3.png"
+import calendar from "../../assets/calendar.png";
 // import calendar from "../assets/calendar.png";
-import Avatar from "../assets/Avatar(8).png";
-import Avatar1 from "../assets/Avatar(9).png";
-import pot from "../assets/pot.png";
-import bigvideo1 from "../assets/bigvideo1.png";
-import bigvideo2 from "../assets/bigvideo2.png";
-import bigvideo from "../assets/bigvideo.png";
+import Avatar from "../../assets/Avatar(8).png";
+import Avatar1 from "../../assets/Avatar(9).png";
+import pot from "../../assets/pot.png";
+import bigvideo1 from "../../assets/bigvideo1.png";
+import bigvideo2 from "../../assets/bigvideo2.png";
+import bigvideo from "../../assets/bigvideo.png";
 import "./EventsHandler.scss";
 
 const EventsHandler = () => {

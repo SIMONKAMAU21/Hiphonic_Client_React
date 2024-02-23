@@ -2,21 +2,18 @@
     width:100%;
     display:flex;
     flex-direction:column;
-    // margin-top:2rem;
-    // justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding:0.7rem;
-    margin-left: 0.9rem;
-    // border:2px solid red;
-
+   
+   
     .section-title{
         display:flex;
+        justify-content: center;
         align-items: center;
-        gap:50px;
-        width: 96%;;
-        justify-content: space-between;
-        // width:99%
-        span.your-pages{
+        gap:4.5rem;
+        
+        width: 100%;;
+         span.your-pages{
             font-weight:700;
             color:rgba(121, 121, 121,0.6);
             font-size: 14px;
@@ -26,7 +23,7 @@
         span:nth-child(2){
             color:blue;
             font-weight:700;
-            font-size: 14px;
+            font-size: 0.8rem;
         }
     }
 
@@ -36,8 +33,7 @@
         justify-content: center;
         align-items:center;
         width:100%;
-        // border: 2px solid black;
-        margin-right: 0.9rem;
+       
 
         .shortcut-item{
             display: flex;
@@ -45,7 +41,7 @@
             align-items: center;
             justify-content: flex-start;
             column-gap:0.7rem;
-     
+            row-gap:0.7rem;
             margin-top:1.25rem;
             width:100%;
 

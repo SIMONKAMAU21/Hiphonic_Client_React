@@ -4,7 +4,8 @@
     .group-title{
         display:flex;
         align-items: center;
-        justify-content: space-between;
+        // justify-content: space-between;
+        gap:7.5rem;
 
         .groups{
             font-weight: bolder;
