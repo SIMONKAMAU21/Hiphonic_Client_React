@@ -1,0 +1,38 @@
+.timeline-page {
+  display: flex;
+  flex-direction: column;
+  width: 831px;
+  margin-top: 5rem;
+  margin-left: 250px;
+  // margin: auto;
+  background-color: aliceblue;
+
+  .upper-timeline{
+    display: flex;
+    
+    align-items: center;
+    flex-direction: column;
+
+    border-radius: 10px;
+    margin: 10px 10px;
+  }
+  .middle-timeline {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 10px 10px;
+    border-radius: 10px;
+  }
+  .lower-timeline {
+    width: 100%;
+    margin-right: 2.5rem;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .timeline-page{
+    width: 668px;
+    // margin: auto;
+    overflow-y: scroll;
+  }
+}

@@ -1,0 +1,122 @@
+.Video-container {
+  width: 831px;
+  margin-top: 5rem;
+  margin: auto;
+  background-color: rgb(231, 231, 231);
+  .see-more-videos {
+    .text-in-categories {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 0 10px 0 10px;
+      p {
+        color: blue;
+        font-weight: 600;
+      }
+    }
+    .video1 {
+      flex-direction: column;
+      width: 100%;
+      overflow: hidden;
+      .explore-categories {
+        display: grid;
+        height: 50vh;
+        gap: 1rem;
+        grid-template-columns: repeat(20, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        .video-container {
+          display: flex;
+          flex-direction: column;
+          height: 50vh;
+          background-color: #efefef;
+          box-shadow: 5px 5px 10px rgba(0,0,0,0.25);
+          border-radius: 10px;
+          .video12 {
+            display: flex;
+            flex-direction: column;
+
+            p {
+              font-size: 14px;
+              margin: 10px 10px;
+              font-weight: 600;
+            }
+            button {
+              color: blue;
+              background-color: #b1aeae;
+              font-weight: 700;
+              border-radius: 5px;
+              margin: 10px 10px;
+              height: 3rem;
+              cursor: pointer;
+              border: none;
+            }
+
+            .music-text {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: space-between;
+
+              img {
+                width: 50px;
+                height: 50px;
+                border: 2px solid gainsboro;
+                border-radius: 50%;
+              }
+            }
+          }
+        }
+      }
+
+      .video-header {
+        border-bottom: 2px solid gainsboro;
+        width: 100%;
+        height: 8vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 10px 0 10px;
+      }
+    }
+  }
+  .minutes-ago-video {
+    width: 100%;
+    min-height: 48vh;
+    display: flex;
+    flex-direction: column;
+    margin-top: 4.5rem;
+    
+    .video-ago-text {
+      p {
+        width: 100%;
+        height: 8vh;
+        color: gray;
+        font-size: 14px;
+        font-weight: 500;
+      }
+    }
+    .video-user-details {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 5px 5px 10px rgba(0,0,0,0.25);
+      padding: 0 10px 0 10px;
+      .innter-txt {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+        line-height: 1px;
+        font-size: 14px;
+        font-weight: 600;
+
+        img {
+          width: 50px;
+          height: 50px;
+        }
+      }
+    }
+  }
+}

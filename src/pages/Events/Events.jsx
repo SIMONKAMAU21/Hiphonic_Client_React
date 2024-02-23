@@ -1,7 +1,7 @@
 import calendar from "../../assets/calendar.png";
 import "./Events.scss";
 import dots from '../../assets/dots.png'
-import EventsHandler from '../../components/Eventhandler/EventsHandler'
+import EventsHandler from '../../components/Eventcomponent/EventsHandler'
 
 const Events = () => {
   return (

@@ -1,13 +1,14 @@
-import map from "../../assets/40px.png";
-import user3 from "../../assets/User3.png";
-import calendar from "../../assets/calendar.png";
-import Avatar from "../../assets/Avatar(8).png";
-import Avatar1 from "../../assets/Avatar(9).png";
-import pot from "../../assets/pot.png";
-import bigvideo1 from "../../assets/bigvideo1.png";
-import bigvideo2 from "../../assets/bigvideo2.png";
-import bigvideo from "../../assets/bigvideo.png";
 
+import map from "../assets/40px.png";
+import user3 from "../assets/user3.png";
+import calendar from "../assets/calendar.png";
+// import calendar from "../assets/calendar.png";
+import Avatar from "../assets/Avatar(8).png";
+import Avatar1 from "../assets/Avatar(9).png";
+import pot from "../assets/pot.png";
+import bigvideo1 from "../assets/bigvideo1.png";
+import bigvideo2 from "../assets/bigvideo2.png";
+import bigvideo from "../assets/bigvideo.png";
 import "./EventsHandler.scss";
 
 const EventsHandler = () => {
@@ -49,7 +50,7 @@ const EventsHandler = () => {
       by: "By: Emma Stone",
       dateicon: calendar,
       datetext: formatDate(new Date()),
-      viewrs: Avatar1,
+      viewrs:Avatar1,
       goingtext: "+2k are going",
       mapicon: map,
       address1: "4517 Washington Ave. Manchester,",
@@ -81,12 +82,9 @@ const EventsHandler = () => {
           </div>
           <div className="by-date">
             <div className="title-by">
-              <div>
-                <h5>{item.title}</h5>
-              </div>
-           <div><p> {item.by}</p></div>
+              <h5>{item.title}</h5>
+              <p> {item.by}</p>
             </div>
-
             <img src={item.dateicon} alt="Calendar icon" />
             <p>Date: {formatDate(new Date())}</p>
           </div>
@@ -104,9 +102,7 @@ const EventsHandler = () => {
                 <p>{item.address2}</p>
               </div>
             </div>
-          <div className="btn">
-          <button>{item.register}</button>
-          </div>
+            <button>{item.register}</button>
           </div>
         </div>
       ))}
