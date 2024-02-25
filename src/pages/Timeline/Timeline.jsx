@@ -1,17 +1,17 @@
 import "./Timeline.scss";
-import Upperdom from "../Components/Upper-timeline";
-import Upperapp from "../Components/Upperapp";
-import Lowerapp from "../Components/Lowerapp";
+import LowerTimeline from '../../components/Timelinecomponent/Lower-part-timeline';
+import MiddleTimeline from "../../components/Timelinecomponent/Middle-part-timeline";
+import UpperTimeline from "../../components/Timelinecomponent/Upper-timeline"
 
 const Timeline = () => {
   return (
     <div className="timeline-page">
       <div className="upper-timeline">
-        <Upperdom />
+        <UpperTimeline />
       </div>
       <div className="middle-timeline">
-        <Upperapp />
-        <Lowerapp />
+        <MiddleTimeline />
+        <LowerTimeline />
       </div>
     </div>
   );
