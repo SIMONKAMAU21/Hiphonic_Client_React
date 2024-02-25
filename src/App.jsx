@@ -1,6 +1,9 @@
 import React from 'react'
 
 import MainLayout from './layouts/MainLayout/MainLayout'
+import { Routes } from 'react-router-dom'
+import { Route } from 'react-router-dom'
+import Login from './pages/Login/Login'
 // import Rigister from './pages/Rigister/Rigister'
 // import Login from './pages/Login/Login'
 
@@ -8,6 +11,11 @@ import MainLayout from './layouts/MainLayout/MainLayout'
 const App = () => {
   return (
 <>
+<Routes>
+       <Route path='/' element={<Login/>}></Route>
+        <Route path='/*' element={<MainLayout/>}> </Route>    
+      
+    </Routes>
     
 
 

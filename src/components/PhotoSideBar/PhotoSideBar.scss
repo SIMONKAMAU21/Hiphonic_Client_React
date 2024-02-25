@@ -1,0 +1,35 @@
+.photoside-container{
+    display: flex;
+    flex-direction: column;
+
+    .photo-see-all{
+        display: flex;
+        align-content: center;
+        justify-content: space-between;
+
+    }
+
+    .photo-div{
+        display: flex;
+        gap:2px;
+    }
+   
+}
+@media (max-width:767px) {
+
+
+    .photoside-container{
+        width:99.9vw;
+       
+        .photo-see-all{
+            justify-content: space-evenly;
+            gap:7rem;
+        }
+    
+    }
+  
+   
+
+
+    
+}

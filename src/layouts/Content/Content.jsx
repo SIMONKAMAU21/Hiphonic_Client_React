@@ -10,29 +10,23 @@ import Photos from '../../pages/Photos/Photos'
 import Events from '../../pages/Events/Events'
 
 import Timeline from '../../pages/Timeline/Timeline'
+import Profile from '../../pages/Profile/Profile'
 
 
 const Content=()=>{
-    return(
-        
-        <div className='content-container'>
-          
-            <Routes>
-                 {/* <Route path='/profile' exact  element={<Profil/>} ></Route>
-                 <Route path='/friends' element={<F>} ></Route>*/}
-    <Route path='/timeline'element={<Timeline/>} ></Route>
-     <Route path='/events' element={<Events/>}></Route>
-    <Route path='/photos' element={<Photos/>}></Route>
-    <Route path='/groups' element={<Groups/>}></Route>
-                 <Route path='/videos' element={<Videos/>}></Route>  
-                 <Route path='/friends' element={<Friends/>}></Route>
-        
-            </Routes>
-          
-
-        </div>
-        
-    )
+    return (
+      <div className="content-container">
+        <Routes>
+          <Route path="/profile" exact element={<Profile/>}></Route>
+          <Route path="/timeline" element={<Timeline />}></Route>
+          <Route path="/events" element={<Events />}></Route>
+          <Route path="/photos" element={<Photos />}></Route>
+          <Route path="/groups" element={<Groups />}></Route>
+          <Route path="/videos" element={<Videos />}></Route>
+          <Route path="/friends" element={<Friends />}></Route>
+        </Routes>
+      </div>
+    );
 }
 
 export default Content
