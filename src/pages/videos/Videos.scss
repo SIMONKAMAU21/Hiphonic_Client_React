@@ -1,6 +1,4 @@
-// *{
-//    border:2px solid red;
-// }
+
 .Video-container {
   // width: 831px;
   width:99.7%;
@@ -123,13 +121,13 @@
     }
     .video-container{
       width:100%;
-      border:2px solid greenyellow;
+      // border:2px solid greenyellow;
       img:nth-child(1){
          width:97%;
       }
     }
     .video-user-details {
-      border:2px solid red;
+      // border:2px solid red;
       display: flex;
       flex-direction: row;
       align-items: center;
