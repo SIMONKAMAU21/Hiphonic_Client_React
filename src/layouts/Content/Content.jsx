@@ -3,7 +3,7 @@ import '../Content/Content.scss'
 
 import {Routes} from 'react-router-dom'
 import { Route } from 'react-router-dom'
-import Events from '../../pages/Events/Events'
+import Friends from '../../pages/Friends/Friends'
 
 
 
@@ -13,13 +13,14 @@ const Content=()=>{
         <div className='content-container'>
           
             <Routes>
-                 {/* <Route path='/profile' exact  element={<Profile/>} ></Route> */}
-                 {/* <Route path='/friends' element={<Friends/>} ></Route> */}
-                 {/* <Route path='/timeline'element={<Timeline/>} ></Route> */}
-                 {/* <Route path='/photos' element={<Ph>}></Route> */}
-                 {/* <Route path='/events' element={<Events/>}></Route>
+                 {/* <Route path='/profile' exact  element={<Profil/>} ></Route>
+                 <Route path='/friends' element={<F>} ></Route>
+                 <Route path='/timeline'element={<Timeline/>} ></Route>
+                 <Route path='/photos' element={<Ph>}></Route>
+                 <Route path='/events' element={<Events/>}></Route>
                  <Route path='/groups' element={<Groups/>}></Route>
-                 <Route path='/videos' element={<Videos/>}></Route> */}
+                 <Route path='/videos' element={<Videos/>}></Route>  */}
+                 <Route path='/friends' element={<Friends/>}></Route>
         
             </Routes>
           
