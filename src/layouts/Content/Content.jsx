@@ -9,6 +9,7 @@ import Groups from '../../pages/Groups/Groups'
 import Photos from '../../pages/Photos/Photos'
 import Events from '../../pages/Events/Events'
 
+import Timeline from '../../pages/Timeline/Timeline'
 
 
 const Content=()=>{
@@ -18,8 +19,8 @@ const Content=()=>{
           
             <Routes>
                  {/* <Route path='/profile' exact  element={<Profil/>} ></Route>
-                 <Route path='/friends' element={<F>} ></Route>
-    <Route path='/timeline'element={<Timeline/>} ></Route>*/}
+                 <Route path='/friends' element={<F>} ></Route>*/}
+    <Route path='/timeline'element={<Timeline/>} ></Route>
      <Route path='/events' element={<Events/>}></Route>
     <Route path='/photos' element={<Photos/>}></Route>
     <Route path='/groups' element={<Groups/>}></Route>
