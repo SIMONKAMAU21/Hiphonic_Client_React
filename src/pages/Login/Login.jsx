@@ -1,5 +1,6 @@
 import React from 'react'
 import'./Login.scss'
+import { NavLink } from 'react-router-dom';
 
 const Login = () => {
   return (
@@ -16,9 +17,9 @@ const Login = () => {
          
        </div>
 
-       <div className="btn">
-         <button>Login</button>
-       </div>
+      <NavLink to='/timeline' className='btn'>
+            <input type="submit" value="Login"/>
+      </NavLink>
      </div>
    </form>
  </div>

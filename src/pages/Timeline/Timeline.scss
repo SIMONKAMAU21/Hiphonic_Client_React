@@ -1,15 +1,18 @@
 .timeline-page {
   display: flex;
   flex-direction: column;
-  width: 831px;
-  margin-top: 5rem;
-  margin-left: 250px;
+  // width: 831px;
+  width:100%;
+ 
   // margin: auto;
   background-color: aliceblue;
+  overflow:scroll;
 
   .upper-timeline{
     display: flex;
-    
+    border:2px solid red;
+    width:95%;
+    flex-wrap:wrap;
     align-items: center;
     flex-direction: column;
 
@@ -21,6 +24,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    width:95%;
     margin: 10px 10px;
     border-radius: 10px;
   }
@@ -31,7 +35,7 @@
 }
 @media screen and (max-width: 1024px) {
   .timeline-page{
-    width: 668px;
+    width: 100%;
     // margin: auto;
     overflow-y: scroll;
   }

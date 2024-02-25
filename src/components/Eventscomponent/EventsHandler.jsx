@@ -72,7 +72,7 @@ const EventsHandler = () => {
       address1: "4517 Washington Ave. Manchester,",
       address2: "Kentucky 39495",
       register: "Register",
-    },
+    }
   ];
 
   return (

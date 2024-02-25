@@ -1,4 +1,4 @@
-import '../Groups/Groups.scss'
+import './Groups.scss'
 import { ShortcutArray } from '../Shortcuts/Shortcuts'
 
 

@@ -35,19 +35,21 @@ const Photos = () => {
         </div>
       </div>
       <div className="photo-images12">
-       <div className="images"><img src={persons} alt="" /></div> 
-       <div className="images"><img src={boxes} alt="" /></div>
-       <div className="images"><img src={star} alt="" /></div>
-       <div className="images"><img src={boxes} alt="" /></div>
-       <div className="images"><img src={persons} alt="" /></div>
-       <div className="images"><img src={boxes} alt="" /></div>
-       <div className="images"><img src={persons} alt="" /></div>
-       <div className="images"><img src={star} alt="" /></div>
-       <div className="images"><img src={persons} alt="" /></div>
-       <div className="images"><img src={star} alt="" /></div>
-       <div className="images"><img src={persons} alt="" /></div>
-       <div className="images"><img src={playbtn} alt="" /></div>
-       <div className="images"><img src={toolbox} alt="" /></div>
+      <img src={persons} alt="" /> 
+      <img src={boxes} alt="" />
+      <img src={star} alt="" />
+      <img src={boxes} alt="" />
+      <img src={persons} alt="" />
+      <img src={boxes} alt="" />
+      <img src={persons} alt="" />
+      <img src={star} alt="" />
+      <img src={persons} alt="" />
+      <img src={star} alt="" />
+      <img src={persons} alt="" />
+      <img src={playbtn} alt="" />
+      <img src={toolbox} alt="" />
+      <img src={toolbox} alt="" />
+      <img src={toolbox} alt="" />
 
         {/* <img src={star} alt="" />
         <img src={playbtn} alt="" />

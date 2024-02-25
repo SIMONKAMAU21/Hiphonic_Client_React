@@ -5,14 +5,28 @@ import { createBrowserRouter,RouterProvider } from 'react-router-dom'
 import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import MainLayout from './layouts/MainLayout/MainLayout.jsx'
+import Login from './pages/Login/Login.jsx'
 
 
 
+// const router=createBrowserRouter([
+//   { 
+//     // path:'/',
+//     // element:<Login/>,
+//     // // errorElement:<NotFound/>
+    
+//   },
+//   {
+//     path:'/*',
+//     element:<MainLayout/>
+//   }
+    
+//   ])
 const router=createBrowserRouter([
   { 
-    // path:'/',
-    // element:<Login/>,
-    // // errorElement:<NotFound/>
+    path:'/',
+    element:<Login/>,
+    // errorElement:<NotFound/>
     
   },
   {
@@ -24,7 +38,7 @@ const router=createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    {/* <App /> */}
     
      
        <RouterProvider router={router}/>
