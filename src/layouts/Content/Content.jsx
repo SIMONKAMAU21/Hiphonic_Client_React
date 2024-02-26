@@ -5,7 +5,7 @@ import {Routes} from 'react-router-dom'
 import { Route } from 'react-router-dom'
 import Friends from '../../pages/Friends/Friends'
 import Videos from '../../pages/videos/Videos'
-import Groups from '../../pages/Groups/Groups'
+import Groups from '../../features/Groups/Groups'
 import Photos from '../../pages/Photos/Photos'
 import Events from '../../pages/Events/Events'
 
