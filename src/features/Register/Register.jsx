@@ -7,6 +7,7 @@ import { selectRegisterUser,getRegisterUserStatus,getRegisterUserError, register
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 
 
@@ -20,6 +21,7 @@ const [ password, setPassword]= useState("")
 const [ tagname, settagname]= useState("")
 const [ email, setemail]= useState("")
 const navigate = useNavigate()
+
 
  const handleSubmit= (e)=>{
   e.preventDefault()
@@ -83,7 +85,12 @@ const navigate = useNavigate()
           </div>
 
           <div className="btn">
-            <button type="submit">Register </button>
+          <div>  <button type="submit">Register </button></div>
+          <div>
+         <NavLink to ="/">
+         <button>Sign up</button>
+         </NavLink>
+          </div>
           </div>
         </div>
       </form>

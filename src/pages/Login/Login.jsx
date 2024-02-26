@@ -1,7 +1,6 @@
 import React from 'react'
 import'./Login.scss'
 import { NavLink } from 'react-router-dom';
-
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import {  authenticationUser, getAuthenticateError, getAuthenticateStatus, selectLogin } from './AuthenticationSlice';
@@ -58,7 +57,7 @@ const Login = () => {
   return (
    <div>
    <form onSubmit={handleLogin}>
-     <div className="form-holder">
+     <div className="form-lholder">
        <div className="inputs-holder">
          <div>
            <input placeholder="Email..." 
@@ -78,9 +77,9 @@ const Login = () => {
          
        </div>
 
-      {/* <NavLink to='/timeline' className='btn'> */}
-            <input type="submit" value="Login"/>
-      {/* </NavLink> */}
+<div className='btn'>
+<button>Login</button>
+</div>
      </div>
    </form>
  </div>
