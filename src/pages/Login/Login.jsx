@@ -1,8 +1,17 @@
 import React from 'react'
 import'./Login.scss'
 import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { authenticationUser } from './AuthenticationSlice';
+
 
 const Login = () => {
+  const dispatch=useDispatch()
+  const authentication=useSelector(authenticationUser);
+  const status=useSelector(authe)
+
+  
   return (
    <div>
    <form>
