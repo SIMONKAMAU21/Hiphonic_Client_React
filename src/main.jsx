@@ -8,6 +8,7 @@ import MainLayout from './layouts/MainLayout/MainLayout.jsx'
 import Login from './pages/Login/Login.jsx'
 import { Provider } from 'react-redux'
 import { store } from './app/store.js'
+import Register from './features/Register/Register.jsx'
 
 
 
@@ -30,6 +31,10 @@ const router=createBrowserRouter([
     element:<Login/>,
     // errorElement:<NotFound/>
     
+  },
+  {
+    path:'/register',
+    element:<Register/>
   },
   {
     path:'/*',
