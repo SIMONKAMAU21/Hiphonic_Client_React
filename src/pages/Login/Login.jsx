@@ -22,7 +22,7 @@ const Login = () => {
     email: yup.string().email('Invalid email').required('Email is required'),
     password: yup.string().required('Password is required'),
   });
-
+     
   // Initialize react-hook-form
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema)
@@ -34,6 +34,7 @@ const Login = () => {
       const response = await dispatch(authenticationUser(data));
       const token = response.payload.token;
       const user_id=response.payload.user["user_id"]
+      console.log(token,user_id)
    
       
       if (token && user_id) {
