@@ -11,6 +11,7 @@ import { useReducer } from 'react';
 import { useState } from 'react';
 import RightSideBarMobile from '../RightSideBar-mobile/RightSideBarMobile';
 import Notification from '../../pages/Notification/Notification'
+import SideMenu from '../../layouts/SideMenu/SideMenu';
 
 
 
@@ -114,7 +115,7 @@ const Header = () => {
 {/* <div> */}
   {
     state.isMenuOpen &&(
-      <SideMenuOpen handleOnClose={handleMenuClose} />
+      <SideMenu handleOnClose={handleMenuClose} />
     )
   }
 

@@ -8,6 +8,7 @@ import friends from "../features/Friends/FriendsSlice";
 
 import registrationReducer from '../features/Register/registerSlice'
 import friendsReducer from '../features/Friends/FriendsSlice'
+import profileReducer from '../pages/Profile/ProfileSlice'
 
 
 export const store =configureStore({
@@ -18,6 +19,8 @@ export const store =configureStore({
 
         authentication:loginReducer,
 
-        registration:registrationReducer
+        registration:registrationReducer,
+
+        profile:profileReducer
     }
 })
