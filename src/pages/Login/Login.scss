@@ -1,11 +1,11 @@
-.form-holder{
+.form-lholder{
    top: 50%;
    left: 50%;
    transform: translate(-50%,-50%);
    position: fixed;
    background: linear-gradient(to top left,rgb(215, 81, 14),rgb(15, 33, 33));
    width: 400px;
-   height: 300px;
+   height: 250px;
    box-shadow: 5px 5px 10px rgba(0,0,0,0.45);
    color: white;
    border-radius: 5px;
@@ -15,7 +15,7 @@
       flex-direction: column;
       padding: 0 10px 0 10px;
       justify-content: space-around;
-      // gap: 1rem;
+
       input{
          color: rgb(0, 0, 0);
          border-radius: 10px;
@@ -25,29 +25,21 @@
          width: 350px;
          height: 50px;
       }
-      .checkbox{
-         border: 2px solid;
-         right: 0;
-         align-items: center;
-         display: flex;
-      }
+      
    }
    .btn{
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-top: 10px;
       width:90%;
       padding:1%;
-      margin:1%;
-
-      background-color: rgba(84, 102, 240, 0.917);
+    
       button{
          color: white;
          font-size: 16px;
          font-weight: 700;
-         background-color: rgba(84, 102, 240, 0.917);
-         width: 250px;
+         background-color: rgba(9, 5, 132, 0.743);
+         width: 150px;
          margin: auto;
       }
    }
