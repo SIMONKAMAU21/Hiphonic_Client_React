@@ -31,6 +31,7 @@ const Login = () => {
       const response = await dispatch(authenticationUser(data));
       const token = response.payload.token;
       const user_id = response.payload.user.user_id;
+      console.log(user_id)
       
       if (token && user_id) {
         localStorage.setItem('token', token);
