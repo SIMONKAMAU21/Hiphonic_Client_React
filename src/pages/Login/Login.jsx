@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import {  authenticationUser, getAuthenticateError, getAuthenticateStatus, selectLogin } from './AuthenticationSlice';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ClipLoader } from 'react-spinners';
 
 
 const Login = () => {
@@ -30,15 +31,18 @@ const Login = () => {
       }
       else{
         try {
+          console.log(email,password)
           const response=await dispatch(authenticationUser({email,password}));
+          console.log(response.payload.user.user_id)
           console.log(response.payload.token);
 
           const token=response.payload.token;
-
+          const user_id=response.payload.user.user_id;
+          
           //save the token to localstorage
-           if(token){
+           if(token&&user_id){
              localStorage.setItem('token',token)
-              navigate('/profile')
+              navigate('/profile');
            }
            else{
               navigate('/')
