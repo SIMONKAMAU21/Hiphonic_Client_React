@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Login.scss';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,40 +16,13 @@ const Login = () => {
   const [password,setPassword]=useState('');
   const navigate=useNavigate()
 
+  // Define Yup schema for validation
+  const schema = yup.object().shape({
+    email: yup.string().email('Invalid email').required('Email is required'),
+    password: yup.string().required('Password is required'),
+  });
 
 
-
-
-  const handleLogin  =async(e)=>{
-      e.preventDefault()
-      if(email==='' && password===''){
-           alert('all fields are required');
-      }
-      else{
-        try {
-          console.log(email,password)
-          const response=await dispatch(authenticationUser({email,password}));
-          console.log(response.payload.user.user_id)
-          console.log(response.payload.token);
-
-          const token=response.payload.token;
-          const user_id=response.payload.user.user_id;
-          
-          //save the token to localstorage
-           if(token&&user_id){
-             localStorage.setItem('token',token)
-              navigate('/profile');
-           }
-           else{
-              navigate('/')
-            
-           }           
-        } catch (error) {
-          console.log(error)
-        }
-       
-                  
-      }
 
   return (
     <div>
@@ -60,8 +33,6 @@ const Login = () => {
               <input 
                 placeholder="Email..." 
                 {...register('email')} 
-                value={email} 
-                onChange={(e) => setEmail(e.target.value)} 
               />
               <p>{errors.email?.message}</p>
             </div>
@@ -70,8 +41,6 @@ const Login = () => {
                 type="password" 
                 placeholder="Password.." 
                 {...register('password')} 
-                value={password} 
-                onChange={(e) => setPassword(e.target.value)} 
               />
               <p>{errors.password?.message}</p>
             </div>
@@ -83,7 +52,6 @@ const Login = () => {
       </form>
     </div>
   );
-}
 }
 
 export default Login;
