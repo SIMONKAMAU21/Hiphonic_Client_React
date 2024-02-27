@@ -7,6 +7,7 @@ import loginReducer from '../pages/Login/AuthenticationSlice'
 import friends from "../features/Friends/FriendsSlice";
 
 import registrationReducer from '../features/Register/registerSlice'
+import friendsReducer from '../features/Friends/FriendsSlice'
 
 
 export const store =configureStore({
