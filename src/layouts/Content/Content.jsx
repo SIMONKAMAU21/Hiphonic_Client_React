@@ -7,7 +7,7 @@ import Friends from '../../features/Friends/Friends'
 import Videos from '../../pages/videos/Videos'
 import Groups from '../../features/Groups/Groups'
 import Photos from '../../pages/Photos/Photos'
-import Events from '../../pages/Events/Events'
+import Events from '../../features/Events/Events'
 
 import Timeline from '../../pages/Timeline/Timeline'
 import Profile from '../../pages/Profile/Profile'
