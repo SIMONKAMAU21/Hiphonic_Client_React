@@ -8,44 +8,54 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 const Login = () => {
-  const dispatch = useDispatch();
-  const authentication = useSelector(selectLogin);
-  const status = useSelector(getAuthenticateStatus);
-  const error = useSelector(getAuthenticateError);
-  const navigate = useNavigate();
+  const dispatch=useDispatch()
+  const authentication=useSelector(selectLogin);
+  const status=useSelector(getAuthenticateStatus);
+  const error=useSelector(getAuthenticateError);
+  const [email, setEmail]=useState('');
+  const [password,setPassword]=useState('');
+  const navigate=useNavigate()
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
-  // Define Yup schema for validation
-  const schema = yup.object().shape({
-    email: yup.string().email('Invalid email').required('Email is required'),
-    password: yup.string().required('Password is required'),
-  });
 
-  // Initialize react-hook-form
-  const { register, handleSubmit, formState: { errors } } = useForm({
-    resolver: yupResolver(schema)
-  });
 
-  // Handle form submission
-  const onSubmit = async (data) => {
-    try {
-      const response = await dispatch(authenticationUser(data));
-      const token = response.payload.token;
-      const user_id = response.payload.user.user_id;
-      
-      if (token && user_id) {
-        localStorage.setItem('token', token);
-        navigate('/profile');
-      } else {
-        navigate('/');
-      }           
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
+  //handle submit
+
+  const handleLogin  =async(e)=>{
+      e.preventDefault()
+      if(email==='' && password===''){
+           alert('all fields are required');
+      }
+      else{
+        try {
+          console.log(email,password)
+          const response=await dispatch(authenticationUser({email,password}));
+          console.log(response.payload.user.user_id)
+          console.log(response.payload.token);
+
+          const token=response.payload.token;
+          const user_id=response.payload.user.user_id;
+          
+          //save the token to localstorage
+           if(token&&user_id){
+             localStorage.setItem('token',token)
+              navigate('/profile');
+           }
+           else{
+              navigate('/')
+            
+           }           
+        } catch (error) {
+          console.log(error)
+        }
+       
+                  
+      }
+
+  }
+  
+  
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
