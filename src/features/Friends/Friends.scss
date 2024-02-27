@@ -5,15 +5,17 @@
     overflow-y: scroll;
     margin: 20px;
     background-color: #fff;
+    border:2px solid red;
   
     .friend {
       margin: 20px;
       padding: 20px;
-      background-color: #dcebfa;
+      background-color: #babbbb;
       display: flex;
       width: 24.5rem;
       flex-direction: column;
       border-radius: 10px;
+      border:2px solid red;
   
       .top {
         display: flex;

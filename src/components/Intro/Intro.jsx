@@ -6,11 +6,11 @@ import calendar1 from  '../../assets/calendar-outline.svg'
 import calendar2 from  '../../assets/calendar-outline.svg'
 import link_photo from '../../assets/link-outline.svg'
 
-const Intro=()=>{
+const Intro=({profile})=>{
     const IntroArray=[
         {
             image_icon:location,
-            details:'2972 Westhemer Rd.'
+            details:profile.location
 
         },
         {
@@ -25,7 +25,7 @@ const Intro=()=>{
         },
         {
             image_icon:link_photo,
-            details:'dribble/Angela'
+            details:profile.tagname
 
         },
 

@@ -13,9 +13,22 @@ import comments_icon from '../../assets/chatbubble-ellipses-outline.svg'
 import star_icon from '../../assets/star-outline.svg'
 import happy_icon from '../../assets/happy-outline.svg'
 import content from '../../assets/content-photo-1.png'
+import { useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
+import { getProfileError, getProfileStatus, getUserDetails, selectProfile } from './ProfileSlice'
+import { useEffect } from 'react'
+import { getFriends, selectAllFriends } from '../../features/Friends/FriendsSlice'
 
 
 const Profile = () => {
+
+    const dispatch=useDispatch();
+    const profile=useSelector(selectProfile);
+    const status=useSelector(getProfileStatus);
+    const error=useSelector(getProfileError);
+    const user_id=localStorage.getItem('user_id')
+    const friends=useSelector(selectAllFriends)
+
     const accountDetails=[
         {
             avatar:Avatar,
@@ -31,7 +44,7 @@ const Profile = () => {
         },
         {
             type:'FRIENDS',
-            total:'7.8K'
+            total:friends.length
         },
         {
             type:'PHOTS',
@@ -80,6 +93,27 @@ const userDetails=[
 
 
 
+
+ useEffect(()=>{
+    const user_id=localStorage.getItem('user_id')
+    console.log("user oif in the fetch",user_id)
+      if(status==='idle'){
+         dispatch(getUserDetails(user_id))
+        //  dispatch(getFriends())
+         console.log(profile)
+      }
+
+ },[status, dispatch])
+
+console.log(profile)
+console.log(user_id)
+console.log("friends",friends)
+
+
+
+
+
+
     return(
         <div className='content-container'>
             <div className='image-wrapper'>
@@ -87,17 +121,13 @@ const userDetails=[
             </div>
             <div className='account-details'>
                 {
-                    accountDetails&&
-                        accountDetails.map((item, index)=>{
-                            const{avatar,full_name,username}=item
-                            return(
-                                <div className='avatar-name-div'><img className='avatar' src={avatar} alt="" /><div className='content-user-name' key={index}>
-                                    <h5>{full_name}</h5>
-                                    <p>{username}</p>
+                   
+                                <div className='avatar-name-div'><img className='avatar' src={Avatar} alt="" /><div className='content-user-name' >
+                                    <h5>{profile.username}</h5>
+                                    <p>{profile.tagname}</p>
 
                                 </div></div>
-                            )
-                        })
+                         
                 }
                 
                 <div className='account-stats'>
@@ -111,8 +141,7 @@ const userDetails=[
                                                 <h5>{type}</h5>
                                                  <p >{total}</p>
                                              </div>
-                                            
-                                            
+                                                                                
                                         )
                                 })
                         }
@@ -122,7 +151,7 @@ const userDetails=[
             <div className='post-wrapper'>
                 <div className='left-post-wrapper'>
                         <ProfileCompletion/>
-                        <Intro/>
+                        <Intro profile={profile}/>
                         <PhotoSideBar/>
 
                 </div>

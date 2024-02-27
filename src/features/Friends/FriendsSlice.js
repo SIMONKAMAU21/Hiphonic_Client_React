@@ -1,11 +1,9 @@
-// friendsSlice.js
-
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios';
 
 const initialState = { friends: [], status: 'idle', error: null };
 
-const FRIENDS_API = `http://localhost:3000/api/friends`; // Update the API endpoint
+const FRIENDS_API = `http://localhost:3000/friendship`;
 
 // Async thunk to check if two users are friends
 export const areFriends = createAsyncThunk('friends/areFriends', async ({ }) => {
@@ -20,7 +18,14 @@ export const areFriends = createAsyncThunk('friends/areFriends', async ({ }) => 
 
 export const getFriends = createAsyncThunk('friends/getFriends', async () => {
   try {
-    const response = await axios.get(FRIENDS_API);
+    const token = localStorage.getItem('token');
+    console.log(token)
+    const config = {
+        headers: {
+            Authorization:`${token}`
+        }
+    };
+    const response = await axios.get(FRIENDS_API,config);
     console.log("response from the friends api", response);
     return response.data;
   } catch (error) {
