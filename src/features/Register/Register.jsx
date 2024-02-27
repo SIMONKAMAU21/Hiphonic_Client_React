@@ -1,40 +1,41 @@
 import React from "react";
 import "./Register.scss";
-// import { UseDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { selectRegisterUser,getRegisterUserStatus,getRegisterUserError, registerUser } from "./registerSlice";
+import { selectRegisterUser, getRegisterUserStatus, getRegisterUserError, registerUser } from "./registerSlice";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 
 
- const Register = () => {
-const dispatch= useDispatch();
-const status = useSelector(getRegisterUserStatus)
-const errror = useSelector (getRegisterUserError)
-const  registrionResponse = useSelector (selectRegisterUser) 
-const [username ,setUserName] = useState ("")
-const [ password, setPassword]= useState("")
-const [ tagname, settagname]= useState("")
-const [ email, setemail]= useState("")
-const navigate = useNavigate()
+const Register = () => {
+  const dispatch = useDispatch();
+  const status = useSelector(getRegisterUserStatus)
+  const errror = useSelector(getRegisterUserError)
+  const registrionResponse = useSelector(selectRegisterUser)
+  const [username, setUserName] = useState("")
+  const [password, setPassword] = useState("")
+  const [tagname, settagname] = useState("")
+  const [email, setemail] = useState("")
+  const navigate = useNavigate()
 
- const handleSubmit= (e)=>{
-  e.preventDefault()
-  if (e.target [0].value === ""|| e.target[1].value===""){
-    alert ("please fill in both fields")
-  }else{
-    console.log(username)
-    dispatch(registerUser ({
-      username: e.target[0].value, email:e.target[1].value, tagname:e.target[2].value, password:e.target[3].value
-    }))
-    e.target.reset();
-    navigate ("/")
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (e.target[0].value === "" || e.target[1].value === "") {
+      alert("please fill in both fields")
+    } else {
+      console.log(username)
+      dispatch(registerUser({
+        username: e.target[0].value, email: e.target[1].value, tagname: e.target[2].value, password: e.target[3].value
+      }))
+      e.target.reset();
+      navigate("/")
+
+    }
   }
- }
 
   return (
     <div>
@@ -44,7 +45,7 @@ const navigate = useNavigate()
             <div>
               <input placeholder="fullnames..."
                 value={username}
-                onChange={(e)=>{
+                onChange={(e) => {
                   setUserName(e.target.value)
 
                 }}
@@ -53,27 +54,27 @@ const navigate = useNavigate()
             <div>
               <input placeholder="Email..."
                 value={email}
-                onChange={(e)=>{
+                onChange={(e) => {
                   setemail(e.target.value)
                 }}
               />
             </div>
             <div>
               <input placeholder="Password.."
-              value={password}
-              onChange={(e)=>{
-                setPassword(e.target.value)
-              }}
-              
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value)
+                }}
+
               />
             </div>
             <div>
               <input placeholder="Tagname..."
-              value={tagname}
-              onChange={(e)=>{
-                settagname(e.target.value)
-              }}
-              
+                value={tagname}
+                onChange={(e) => {
+                  settagname(e.target.value)
+                }}
+
               />
             </div>
           </div>
@@ -83,7 +84,12 @@ const navigate = useNavigate()
           </div>
 
           <div className="btn">
-            <button type="submit">Register </button>
+            <div>  <button type="submit">Register </button></div>
+            <div>
+              <NavLink to="/">
+                <button>Sign up</button>
+              </NavLink>
+            </div>
           </div>
         </div>
       </form>
