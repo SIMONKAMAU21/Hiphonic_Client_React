@@ -1,28 +1,50 @@
-import React from 'react'
-import'./Login.scss'
-import { NavLink } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
-import {  authenticationUser, getAuthenticateError, getAuthenticateStatus, selectLogin } from './AuthenticationSlice';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { ClipLoader } from 'react-spinners';
-
+import React, { useState } from 'react';
+import './Login.scss';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { authenticationUser, getAuthenticateError, getAuthenticateStatus, selectLogin } from './AuthenticationSlice';
+import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 const Login = () => {
-  const dispatch=useDispatch()
-  const authentication=useSelector(selectLogin);
-  const status=useSelector(getAuthenticateStatus);
-  const error=useSelector(getAuthenticateError);
-  const [email, setEmail]=useState('');
-  const [password,setPassword]=useState('');
-  const navigate=useNavigate()
+  const dispatch = useDispatch();
+  const authentication = useSelector(selectLogin);
+  const status = useSelector(getAuthenticateStatus);
+  const error = useSelector(getAuthenticateError);
+  const navigate = useNavigate();
 
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
+  // Define Yup schema for validation
+  const schema = yup.object().shape({
+    email: yup.string().email('Invalid email').required('Email is required'),
+    password: yup.string().required('Password is required'),
+  });
 
+  // Initialize react-hook-form
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    resolver: yupResolver(schema)
+  });
 
-
-  //handle submit
+  // Handle form submission
+  const onSubmit = async (data) => {
+    try {
+      const response = await dispatch(authenticationUser(data));
+      const token = response.payload.token;
+      const user_id = response.payload.user.user_id;
+      
+      if (token && user_id) {
+        localStorage.setItem('token', token);
+        navigate('/profile');
+      } else {
+        navigate('/');
+      }           
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleLogin  =async(e)=>{
       e.preventDefault()
@@ -57,40 +79,39 @@ const Login = () => {
                   
       }
 
-  }
-  
-  
+
   return (
-   <div>
-   <form onSubmit={handleLogin}>
-     <div className="form-lholder">
-       <div className="inputs-holder">
-         <div>
-           <input placeholder="Email..." 
-
-           value={email}
-           onChange={(e)=>{setEmail(e.target.value)}}          
-  
-           />
-         </div>
-         <div>
-           <input placeholder="Password.." 
-            value={password}
-            onChange={(e)=>{setPassword(e.target.value)}}
-           
-           />
-         </div>
-         
-       </div>
-
-<div className='btn'>
-<button>Login</button>
-</div>
-     </div>
-   </form>
- </div>
-);
+    <div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="form-lholder">
+          <div className="inputs-holder">
+            <div>
+              <input 
+                placeholder="Email..." 
+                {...register('email')} 
+                value={email} 
+                onChange={(e) => setEmail(e.target.value)} 
+              />
+              <p>{errors.email?.message}</p>
+            </div>
+            <div>
+              <input 
+                type="password" 
+                placeholder="Password.." 
+                {...register('password')} 
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)} 
+              />
+              <p>{errors.password?.message}</p>
+            </div>
+          </div>
+          <div className='btn'>
+            <button type="submit">Login</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  );
 };
 
-
-export default Login
+export default Login;
