@@ -8,9 +8,9 @@ const initialState = { friends: [], status: 'idle', error: null };
 const FRIENDS_API = `http://localhost:3000/api/friends`; // Update the API endpoint
 
 // Async thunk to check if two users are friends
-export const areFriends = createAsyncThunk('friends/areFriends', async ({ user1Id, user2Id }) => {
+export const areFriends = createAsyncThunk('friends/areFriends', async ({ }) => {
   try {
-    const response = await axios.get(`${FRIENDS_API}/areFriends/${user1Id}/${user2Id}`);
+    const response = await axios.get(FRIENDS_API);
     console.log("response from areFriends API", response);
     return response.data;
   } catch (error) {
