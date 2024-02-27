@@ -20,11 +20,6 @@ const Login = () => {
 
 
 
-<<<<<<< HEAD
-  //handle submit
-
-=======
->>>>>>> a17631117da8e631165a0cf0155ebf998276dd76
   const handleLogin  =async(e)=>{
       e.preventDefault()
       if(email==='' && password===''){
@@ -56,13 +51,6 @@ const Login = () => {
                   
       }
 
-<<<<<<< HEAD
-  }
-  
-  
-=======
-
->>>>>>> a17631117da8e631165a0cf0155ebf998276dd76
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>

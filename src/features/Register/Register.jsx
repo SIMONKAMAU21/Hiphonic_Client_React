@@ -78,7 +78,7 @@ const Register = () => {
             <div> <button type="submit">Register</button></div>
             <div>
               <NavLink to="/">
-                <button>Sign up</button>
+                <button>Sign in</button>
               </NavLink>
             </div>
           </div>
