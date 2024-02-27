@@ -13,7 +13,7 @@ const Register = () => {
   const error = useSelector(getRegisterUserError);
 
   const schema = yup.object().shape({
-    fullname: yup.string().required("Fullname is required"),
+    username: yup.string().required("username is required"),
     email: yup.string().required("Email is required"),
     password: yup
       .string()
@@ -41,10 +41,10 @@ const Register = () => {
           <div className="inputs-holder">
             <div>
               <input
-                placeholder="Fullname..."
-                {...register("fullname")}
+                placeholder="username..."
+                {...register("username")}
               />
-              <p>{errors.fullname?.message}</p>
+              <p>{errors.username?.message}</p>
             </div>
             <div>
               <input
@@ -78,7 +78,7 @@ const Register = () => {
             <div> <button type="submit">Register</button></div>
             <div>
               <NavLink to="/">
-                <button>Sign up</button>
+                <button>Sign in</button>
               </NavLink>
             </div>
           </div>
