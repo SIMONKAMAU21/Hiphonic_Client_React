@@ -8,11 +8,13 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 const Login = () => {
-  const dispatch = useDispatch();
-  const authentication = useSelector(selectLogin);
-  const status = useSelector(getAuthenticateStatus);
-  const error = useSelector(getAuthenticateError);
-  const navigate = useNavigate();
+  const dispatch=useDispatch()
+  const authentication=useSelector(selectLogin);
+  const status=useSelector(getAuthenticateStatus);
+  const error=useSelector(getAuthenticateError);
+  const [email, setEmail]=useState('');
+  const [password,setPassword]=useState('');
+  const navigate=useNavigate()
 
   // Define Yup schema for validation
   const schema = yup.object().shape({
@@ -20,28 +22,7 @@ const Login = () => {
     password: yup.string().required('Password is required'),
   });
 
-  // Initialize react-hook-form
-  const { register, handleSubmit, formState: { errors } } = useForm({
-    resolver: yupResolver(schema)
-  });
 
-  // Handle form submission
-  const onSubmit = async (data) => {
-    try {
-      const response = await dispatch(authenticationUser(data));
-      const token = response.payload.token;
-      const user_id = response.payload.user.user_id;
-      
-      if (token && user_id) {
-        localStorage.setItem('token', token);
-        navigate('/profile');
-      } else {
-        navigate('/');
-      }           
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <div>
