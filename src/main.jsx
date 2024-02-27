@@ -12,19 +12,6 @@ import Register from './features/Register/Register.jsx'
 
 
 
-// const router=createBrowserRouter([
-//   { 
-//     // path:'/',
-//     // element:<Login/>,
-//     // // errorElement:<NotFound/>
-    
-//   },
-//   {
-//     path:'/*',
-//     element:<MainLayout/>
-//   }
-    
-//   ])
 const router=createBrowserRouter([
   { 
     path:'/',
