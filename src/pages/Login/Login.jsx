@@ -34,12 +34,14 @@ const Login = () => {
           console.log(email,password)
           const response=await dispatch(authenticationUser({email,password}));
           console.log(response.payload.user.user_id)
+          // console.log(response.payload.user.user_id)
           console.log(response.payload.token);
+
 
           const token=response.payload.token;
           const user_id=response.payload.user.user_id;
           
-          //save the token to localstorage
+          // save the token to localstorage
            if(token&&user_id){
              localStorage.setItem('token',token)
               navigate('/profile');
