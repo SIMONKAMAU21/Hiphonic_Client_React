@@ -1,3 +1,6 @@
+
+
+
 import React from 'react';
 import './Login.scss';
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -6,16 +9,13 @@ import { authenticationUser, getAuthenticateError, getAuthenticateStatus, select
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useState } from 'react';
 
 const Login = () => {
-  const dispatch=useDispatch()
-  const authentication=useSelector(selectLogin);
-  const status=useSelector(getAuthenticateStatus);
-  const error=useSelector(getAuthenticateError);
-  const [email, setEmail]=useState('');
-  const [password,setPassword]=useState('');
-  const navigate=useNavigate()
+  const dispatch = useDispatch();
+  const authentication = useSelector(selectLogin);
+  const status = useSelector(getAuthenticateStatus);
+  const error = useSelector(getAuthenticateError);
+  const navigate = useNavigate();
 
   // Define Yup schema for validation
   const schema = yup.object().shape({
@@ -23,18 +23,23 @@ const Login = () => {
     password: yup.string().required('Password is required'),
   });
 
-
+  // Initialize react-hook-form
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    resolver: yupResolver(schema)
+  });
 
   // Handle form submission
   const onSubmit = async (data) => {
     try {
       const response = await dispatch(authenticationUser(data));
       const token = response.payload.token;
-      const user_id = response.payload.user.user_id;
-      console.log(user_id)
+      const user_id=response.payload.user["user_id"]
+   
       
       if (token && user_id) {
         localStorage.setItem('token', token);
+        localStorage.setItem('user_id',user_id)
+        
         navigate('/profile');
       } else {
         navigate('/');
@@ -43,7 +48,6 @@ const Login = () => {
       console.log(error);
     }
   };
-
 
   return (
     <div>
@@ -54,22 +58,23 @@ const Login = () => {
               <input 
                 placeholder="Email..." 
                 {...register('email')} 
-                value={(e)=>{setEmail(e.target.value)}}
+                onChange={(e)=>{setPassword(e.target.value)}}
               />
               <p>{errors.email?.message}</p>
+              
             </div>
             <div>
               <input 
                 type="password" 
                 placeholder="Password.." 
                 {...register('password')} 
-                value={(e)=>{setPassword(e.target.value)}}
+                onChange={(e)=>{setPassword(e.target.value)}}
               />
               <p>{errors.password?.message}</p>
             </div>
           </div>
           <div className='btn'>
-            <button type="submit" className='button'>Login</button>
+            <button type="submit">Login</button>
           </div>
         </div>
       </form>
@@ -78,3 +83,4 @@ const Login = () => {
 }
 
 export default Login;
+
