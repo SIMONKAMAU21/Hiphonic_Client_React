@@ -6,6 +6,7 @@ import { authenticationUser, getAuthenticateError, getAuthenticateStatus, select
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useState } from 'react';
 
 const Login = () => {
   const dispatch=useDispatch()
@@ -53,6 +54,7 @@ const Login = () => {
               <input 
                 placeholder="Email..." 
                 {...register('email')} 
+                value={(e)=>{setEmail(e.target.value)}}
               />
               <p>{errors.email?.message}</p>
             </div>
@@ -61,6 +63,7 @@ const Login = () => {
                 type="password" 
                 placeholder="Password.." 
                 {...register('password')} 
+                value={(e)=>{setPassword(e.target.value)}}
               />
               <p>{errors.password?.message}</p>
             </div>
