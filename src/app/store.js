@@ -9,7 +9,7 @@ import friends from "../features/Friends/FriendsSlice";
 import registrationReducer from '../features/Register/registerSlice'
 import friendsReducer from '../features/Friends/FriendsSlice'
 import profileReducer from '../pages/Profile/ProfileSlice'
-
+import messageReducer from '../components/MessagesComponent/messageSlice'
 
 export const store =configureStore({
     reducer:{
@@ -21,6 +21,8 @@ export const store =configureStore({
 
         registration:registrationReducer,
 
-        profile:profileReducer
+        profile:profileReducer,
+
+        message:messageReducer,
     }
 })

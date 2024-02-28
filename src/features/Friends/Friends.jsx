@@ -1,10 +1,16 @@
-
-
+// Friends.jsx
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import '../Friends/Friends.scss'
-import { selectAllFriends, getFriends, getFriendsStatus, getFriendsError } from "../Friends/FriendsSlice";
-import  Avatar from '../../assets/Avatar.png'
+import Modal from "react-modal";
+import '../Friends/Friends.scss';
+import {
+  selectAllFriends,
+  getFriends,
+  getFriendsStatus,
+  getFriendsError,
+  sendMessage,
+} from "../Friends/FriendsSlice";
+import Avatar from '../../assets/Avatar.png';
 
 const Friends = () => {
   const dispatch = useDispatch();
@@ -12,23 +18,41 @@ const Friends = () => {
   const status = useSelector(getFriendsStatus);
   const error = useSelector(getFriendsError);
   const [selectedFriend, setSelectedFriend] = useState(null);
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [typedMessage, setTypedMessage] = useState('');
 
   useEffect(() => {
     if (status === 'idle') {
-      console.log(friends)
       dispatch(getFriends());
     }
   }, [status, dispatch]);
-  console.log(friends)
 
   const handleSendMessage = (friend) => {
-    // Implement sending message functionality here
-    console.log("Sending message to:", friends);
+    setSelectedFriend(friend);
+    localStorage.setItem('receiver_id', friend.user_id);
+    setModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setSelectedFriend(null);
+    setModalOpen(false);
+  };
+
+  const handleSendClick = async () => {
+    const receiver_id = localStorage.getItem('receiver_id');
+    if (typedMessage !== '') {
+      await dispatch(sendMessage({
+        receiver_id: receiver_id,
+        content: typedMessage
+      }));
+      setTypedMessage('');
+      setModalOpen(false);
+      setSelectedFriend(null); // Reset selectedFriend after sending the message
+    }
   };
 
   return (
     <div className="friends">
-
       {status === 'loading' && <div>Loading...</div>}
       {status === 'failed' && <div>Error: {error}</div>}
       {status === 'succeeded' &&
@@ -43,18 +67,53 @@ const Friends = () => {
                 <p>@{friend.username}</p>
               </div>
               <div className="action">
-                {selectedFriend === friend.id ? (
-                  <button onClick={() => setSelectedFriend(null)}>Cancel</button>
+                {selectedFriend && selectedFriend.id === friend.id ? (
+                  <>
+                    <button onClick={handleSendClick}>Send</button>
+                    <button onClick={handleModalClose}>Cancel</button>
+                  </>
                 ) : (
-                  <button onClick={() => setSelectedFriend(friend.id)}>Message</button>
+                  <button onClick={() => handleSendMessage(friend)}>Message</button>
                 )}
               </div>
             </div>
-            {selectedFriend === friend.id && (
-              <div className="bottom">
-                <textarea rows="4" cols="3"  placeholder="Type your message..."></textarea>
-                <button onClick={() => handleSendMessage(friend)}>Send</button>
-              </div>
+            {selectedFriend && selectedFriend.id === friend.id && (
+              <Modal
+                isOpen={isModalOpen}
+                onRequestClose={handleModalClose}
+                contentLabel="Message Modal"
+                style={{
+                  content: {
+                    width: '500px',
+                    height: '300px',
+                    margin: 'auto',
+                    borderRadius: '8px',
+                    outline: 'none',
+                    padding: '20px',
+                    boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
+                  },
+                  overlay: {
+                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                  },
+                }}
+              >
+                <div className="bottom">
+                  <textarea
+                    style={{
+                      width: '100%',
+                      height: '250px',
+                      boxSizing: 'border-box',
+                    }}
+                    placeholder="Type your message..."
+                    value={typedMessage}
+                    onChange={(e) => setTypedMessage(e.target.value)}
+                  ></textarea>
+                  <div className="modal-buttons">
+                    <button onClick={handleSendClick}>Send</button>
+                    <button onClick={handleModalClose}>Cancel</button>
+                  </div>
+                </div>
+              </Modal>
             )}
           </div>
         ))}
@@ -63,4 +122,3 @@ const Friends = () => {
 };
 
 export default Friends;
-
