@@ -18,9 +18,34 @@ import { useSelector } from 'react-redux'
 import { getProfileError, getProfileStatus, getUserDetails, selectProfile } from './ProfileSlice'
 import { useEffect } from 'react'
 import { getFriends, selectAllFriends } from '../../features/Friends/FriendsSlice'
+import { useReducer } from 'react'
+import AppReducer, { initialState } from '../../reducers/AppReducers'
+import EditProfile from '../../features/Profile/EditProfile'
+import { useState } from 'react'
+import { PuffLoader } from 'react-spinners'
 
 
 const Profile = () => {
+   
+    const reduxDispatch=useDispatch();
+    const profile=useSelector(selectProfile);
+    const status=useSelector(getProfileStatus);
+    const error=useSelector(getProfileError);
+    const user_id=localStorage.getItem('user_id')
+    const friends=useSelector(selectAllFriends);
+    // const [state, dispatch] = useReducer(AppReducer, initialState);
+    const [showUpdateModal,setShowUpdateModal]=useState(false);
+
+    const toggleUpdateModal=()=>{
+        console.log(showUpdateModal)
+        setShowUpdateModal(!showUpdateModal)
+        
+    }
+    
+   
+    
+
+   
 
     const dispatch = useDispatch();
     const profile = useSelector(selectProfile);
@@ -94,16 +119,33 @@ const Profile = () => {
 
 
 
-    useEffect(() => {
-        const user_id = localStorage.getItem('user_id')
-        console.log("user oif in the fetch", user_id)
-        if (status === 'idle') {
-            dispatch(getUserDetails(user_id))
-            //  dispatch(getFriends())
-            console.log(profile)
-        }
+ useEffect(()=>{
+    const user_id=localStorage.getItem('user_id')
+    console.log("user oif in the fetch",user_id)
+      if(status==='idle'){
+         reduxDispatch(getUserDetails(user_id))
+        //  dispatch(getFriends())
+         console.log(profile)
+      }
 
-    }, [status, dispatch])
+ },[status, reduxDispatch])
+
+
+
+ const handleEditOpen = () => {
+    
+    dispatch({ type:"SET_EDIT_PROFILE_OPEN", payload: true });
+    console.log("state set to true");
+    console.log(state.isEditProfileOpen)
+  };
+
+
+const handleEditClose=()=>{
+
+    dispatch({ type:"SET_EDIT_PROFILE_OPEN", payload: false });   
+    console.log(state.isEditProfileOpen)   
+}
+
 
     console.log(profile)
     console.log(user_id)
@@ -112,12 +154,27 @@ const Profile = () => {
 
 
 
-
+    return(<>
+    {(status==='loading')?
+        (<div className="status-loader">
+          <div className='status-loader-content'>
+           <PuffLoader loading={true} size={250} /> 
+           <p>Please wait........</p>
+          </div>
+    
+         
+        </div>):<div className='content-container'>
 
     return (
         <div className='content-container'>
+
             <div className='image-wrapper'>
                 <img src={backgroundImage} alt="" />
+                {/* <button class='edit-btn' onClick={handleEditOpen}> Edit profile</button> */}
+                <button type="button" class='edit-btn' onClick={toggleUpdateModal} >{showUpdateModal?'Close':'update'}</button>
+                {
+                    showUpdateModal &&(<EditProfile profile={profile} closeModal={toggleUpdateModal}/>)
+                }
             </div>
             <div className='account-details'>
                 {
@@ -167,6 +224,18 @@ const Profile = () => {
             </div>
 
         </div>
+        
+        
+        }
+    
+    
+    
+    </>
+
+
+        
+        
+        
     )
 }
 

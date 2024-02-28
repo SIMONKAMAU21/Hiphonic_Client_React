@@ -9,6 +9,7 @@ import { authenticationUser, getAuthenticateError, getAuthenticateStatus, select
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { CircleLoader, PuffLoader } from 'react-spinners';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -52,6 +53,22 @@ const Login = () => {
 
   return (
     <div>
+    {status==='loading'&&
+    (<div className="status-loader">
+      <div className='status-loader-content'>
+       <PuffLoader loading={true} size={150} /> 
+       <p>Please wait .........</p>
+      </div>
+
+     
+    </div>)
+    
+    
+    }
+
+
+
+
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-lholder">
           <div className="inputs-holder">
@@ -79,7 +96,9 @@ const Login = () => {
           </div>
         </div>
       </form>
+    
     </div>
+    
   );
   
 }
