@@ -35,6 +35,12 @@ dependencies:
   react-icons:
     specifier: ^5.0.1
     version: 5.0.1(react@18.2.0)
+  react-modal:
+    specifier: ^3.16.1
+    version: 3.16.1(react-dom@18.2.0)(react@18.2.0)
+  react-modals:
+    specifier: ^0.0.1
+    version: 0.0.1(react-dom@18.2.0)(react@18.2.0)
   react-redux:
     specifier: ^9.1.0
     version: 9.1.0(@types/react@18.2.57)(react@18.2.0)(redux@5.0.1)
@@ -1234,6 +1240,10 @@ packages:
     resolution: {integrity: sha512-NhQMsz5k0d6m9z3qAxnsOR/ebal4NAGsrNVRwcDo4Kc/zQ7KdsTKZUxZoygHcVRb0QDW3waEDIcE3isZ79RP6g==}
     dev: true
 
+  /element-class@0.2.2:
+    resolution: {integrity: sha512-e4tkRAFtQkGiZB8fzxAFdjEbx5zajMb1GpiRwKs3lhOLxQcvdOIG7XlERT1sTX3/ulIUGZrgL02YZ0cRNC5OLQ==}
+    dev: false
+
   /es-abstract@1.22.4:
     resolution: {integrity: sha512-vZYJlk2u6qHYxBOTjAeg7qUxHdNfih64Uu2J8QqWgXZ2cri0ZpJAkzDUK/q593+mvKwlxyaxr6F1Q+3LKoQRgg==}
     engines: {node: '>= 0.4'}
@@ -1518,6 +1528,14 @@ packages:
     resolution: {integrity: sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /exenv@1.2.0:
+    resolution: {integrity: sha512-4wr7O1jptvGPYWb1PHyX6QGcJlP3V7CRD4CPjw+k2k/Drbi2DMHic2OqnQ2kHEImmpAtNFJL1PNXbiN9JgXD6w==}
+    dev: false
+
+  /exenv@1.2.2:
+    resolution: {integrity: sha512-Z+ktTxTwv9ILfgKCk32OX3n/doe+OcLTRtqK9pcL+JsP3J1/VW8Uvl4ZjLlKqeW4rzK4oesDOGMEMRIZqtP4Iw==}
+    dev: false
 
   /fast-deep-equal@3.1.3:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
@@ -2137,6 +2155,11 @@ packages:
     resolution: {integrity: sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==}
     engines: {node: '>=0.10.0'}
 
+  /object-assign@4.0.1:
+    resolution: {integrity: sha512-c6legOHWepAbWnp3j5SRUMpxCXBKI4rD7A5Osn9IzZ8w4O/KccXdW0lqdkQKbpk0eHGjNgKihgzY6WuEq99Tfw==}
+    engines: {node: '>=0.10.0'}
+    dev: false
+
   /object-assign@4.1.1:
     resolution: {integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==}
     engines: {node: '>=0.10.0'}
@@ -2303,6 +2326,16 @@ packages:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
     dev: true
 
+  /react-addons-render-to-portal-mixin@0.1.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-N87//c0HffUb7KwzV5gmeKv8yrwOGkUwW1I+Mm201rr/RbNfFY7qkf3xiPB7RQYdJUXhqT7vZsTg5ifQegr+MA==}
+    peerDependencies:
+      react: 0.14.6
+      react-dom: 0.14.6
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
   /react-big-calendar@1.11.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-CabU9UCYIjbAew4GpDJa6ycrRINEEONbXEfO0YU7hHuHA2lhyMjnONY+GcpnJvhpOZC3wTtUa7krCriCm+iuKg==}
     peerDependencies:
@@ -2381,6 +2414,35 @@ packages:
 
   /react-lifecycles-compat@3.0.4:
     resolution: {integrity: sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==}
+    dev: false
+
+  /react-modal@3.16.1(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-VStHgI3BVcGo7OXczvnJN7yT2TWHJPDXZWyI/a0ssFNhGZWsPmB8cF0z33ewDXq4VfYMO1vXgiv/g8Nj9NDyWg==}
+    engines: {node: '>=8'}
+    peerDependencies:
+      react: ^0.14.0 || ^15.0.0 || ^16 || ^17 || ^18
+      react-dom: ^0.14.0 || ^15.0.0 || ^16 || ^17 || ^18
+    dependencies:
+      exenv: 1.2.2
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      react-lifecycles-compat: 3.0.4
+      warning: 4.0.3
+    dev: false
+
+  /react-modals@0.0.1(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-JlLuQpt+pLnAE+57hzFge5Vq29zlnQstGEFhqj5HGNRTsH/wQo2XY6ZDEs2lQN/7LieKbkRDZeIHaSTvXb9hXw==}
+    peerDependencies:
+      react: 0.14.6
+      react-dom: 0.14.6
+    dependencies:
+      element-class: 0.2.2
+      exenv: 1.2.0
+      object-assign: 4.0.1
+      react: 18.2.0
+      react-addons-render-to-portal-mixin: 0.1.0(react-dom@18.2.0)(react@18.2.0)
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /react-overlays@5.2.1(react-dom@18.2.0)(react@18.2.0):

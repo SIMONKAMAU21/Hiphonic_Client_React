@@ -7,6 +7,8 @@
     background-color: #fff;
     border:2px solid red;
   
+
+  
     .friend {
       margin: 20px;
       padding: 20px;
@@ -15,7 +17,8 @@
       width: 24.5rem;
       flex-direction: column;
       border-radius: 10px;
-      border:2px solid red;
+      border:2px solid rgb(76, 0, 255);
+
   
       .top {
         display: flex;
@@ -70,5 +73,8 @@
         width: auto;
       }
     }
-  }
+  
+     
+    }
+  
   

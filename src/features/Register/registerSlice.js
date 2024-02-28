@@ -11,6 +11,7 @@ const initialState = {
 export const registerUser = createAsyncThunk("users/register", async (user) => {
   try {
     const response = await axios.post(REGISTER_API, user);
+    console.log(user)
     return response.data;
   } catch (error) {
     return error.message;

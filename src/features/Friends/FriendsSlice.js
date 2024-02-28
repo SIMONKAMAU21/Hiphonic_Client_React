@@ -1,67 +1,313 @@
-
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+// FriendsSlice.js
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const initialState = { friends: [], status: 'idle', error: null };
 
-const FRIENDS_API = `http://localhost:3000/api/friendship`; // Update the API endpoint
-
-
-
-
-// Async thunk to check if two users are friends
-export const areFriends = createAsyncThunk('friends/areFriends', async ({ }) => {
-  try {
-    const response = await axios.get(FRIENDS_API);
-    console.log("response from areFriends API", response);
-    return response.data;
-  } catch (error) {
-    return false; // or handle the error accordingly
-  }
-});
 
 export const getFriends = createAsyncThunk('friends/getFriends', async () => {
-  try {
-    const token = localStorage.getItem('token');
-    console.log(token)
-    const config = {
-        headers: {
-            Authorization:`${token}`
-        }
-    };
-    const response = await axios.get(FRIENDS_API,config);
-    console.log("response from the friends api", response);
+ 
+
+
+   try {
+    const authToken = localStorage.getItem("token")
+    console.log(authToken)
+    const config={
+       headers:{
+          Authorization:`${authToken}`
+       }
+    }
+    const response = await axios.get('http://localhost:3000/friendship',config)
+  
+
     return response.data;
   } catch (error) {
-    return error.message;
+    return error.response.data;
   }
 });
 
-export const friendsSlice = createSlice({
+
+export const followOtherUser = createAsyncThunk('friends/followOtherUser', async (followingId, { getState }) => {
+  
+  const authToken = getAuthToken(getState());
+    const user = getState().auth.user;
+    const followerId = user.user_id;
+  
+    try {
+      const response = await axios.post(`http://localhost:3000/friendship/${followingId}`, {
+        followerId,
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `JWT ${authToken}`,
+        },
+      });
+  
+      return response.data;
+    } catch (error) {
+      throw error.response.data;
+    }
+  });
+  
+
+// Get all followers
+export const getAllFollowers = createAsyncThunk('friends/getAllFollowers', async (_, { getState }) => {
+  const authToken = getAuthToken(getState());
+  const user = getState().auth.user;
+  const userId = user.user_id;
+
+  try {
+    const response = await axios.get(`http://localhost:3000/friendship/followers/${userId}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `JWT ${authToken}`,
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    throw error.response.data;
+  }
+});
+
+
+export const sendMessage = createAsyncThunk('friends/sendMessage', async ({ content, receiver_id }) => {
+  try {
+
+    const authToken = localStorage.getItem("token")
+    console.log(authToken)
+    const config={
+       headers:{
+          Authorization:`${authToken}`
+       }
+    }
+        const response = await axios.post('http://localhost:3000/message/new', {receiver_id, content},config);
+         console.log(response)
+        return response.data;
+      } catch (error) {
+        throw error.response.data;
+      }
+    });
+
+const friendsSlice = createSlice({
   name: 'friends',
-  initialState,
+  initialState: {
+    entities: [],
+    status: 'idle',
+    error: null,
+  },
   reducers: {},
-  extraReducers(builders) {
-    builders
+  extraReducers: (builder) => {
+    builder
       .addCase(getFriends.pending, (state) => {
         state.status = 'loading';
       })
       .addCase(getFriends.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.friends = action.payload;
+        state.entities = action.payload;
       })
       .addCase(getFriends.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
       })
-      .addCase(areFriends.fulfilled, (state, action) => {
-        
+      .addCase(followOtherUser.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(followOtherUser.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        // Handle success if needed
+      })
+      .addCase(followOtherUser.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      })
+      .addCase(getAllFollowers.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(getAllFollowers.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.entities = action.payload;
+      })
+      .addCase(getAllFollowers.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      })
+      .addCase(sendMessage.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(sendMessage.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        // Handle success if needed
+      })
+      .addCase(sendMessage.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
       });
-  }
+  },
 });
 
-export const selectAllFriends = (state) => state.friends.friends;
+export default friendsSlice.reducer;
+export const selectAllFriends = (state) => state.friends.entities;
 export const getFriendsStatus = (state) => state.friends.status;
 export const getFriendsError = (state) => state.friends.error;
 
-export default friendsSlice.reducer;
+
+
+
+
+
+
+
+
+
+
+
+
+// import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+// import axios from 'axios';
+
+
+// const getAuthToken = (state) => state.auth.token;
+
+
+// export const getFriends = createAsyncThunk('friends/getFriends', async () => {
+
+
+//   try {
+//     const authToken = localStorage.getItem("token")
+//     console.log(authToken)
+//     const config={
+//        headers:{
+//           Authorization:`${authToken}`
+//        }
+//     }
+//     const response = await axios.get('http://localhost:3000/friendship',config)
+  
+
+//     return response.data;
+//   } catch (error) {
+//     return error.response.data;
+//   }
+// });
+
+
+// export const followOtherUser = createAsyncThunk('friends/followOtherUser', async (followingId, { getState }) => {
+//   const authToken = getAuthToken(getState());
+//   const user = getState().auth.user;
+//   const followerId = user.user_id;
+
+//   try {
+//     const response = await axios.post(`http://localhost:3000/friendship/${followingId}`, {
+//       followerId,
+//     }, {
+//       headers: {
+//         'Content-Type': 'application/json',
+//         'Authorization': `JWT ${authToken}`,
+//       },
+//     });
+
+//     return response.data;
+//   } catch (error) {
+//     throw error.response.data;
+//   }
+// });
+
+
+// export const getAllFollowers = createAsyncThunk('friends/getAllFollowers', async (_, { getState }) => {
+//   const authToken = getAuthToken(getState());
+//   const user = getState().auth.user;
+//   const userId = user.user_id;
+
+//   try {
+//     const response = await axios.get(`http://localhost:3000/friendship/followers/${userId}`, {
+//       headers: {
+//         'Content-Type': 'application/json',
+//         'Authorization': `JWT ${authToken}`,
+//       },
+//     });
+
+//     return response.data;
+//   } catch (error) {
+//     throw error.response.data;
+//   }
+// });
+
+
+// export const sendMessage = createAsyncThunk('friends/sendMessage', async ({ friendId, message }) => {
+//   try {
+//     const response = await axios.post('http://localhost:3000/message/new', {
+//       friendId,
+//       message,
+//     }, {
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//     });
+
+//     return response.data;
+//   } catch (error) {
+//     throw error.response.data;
+//   }
+// });
+
+// const friendsSlice = createSlice({
+//   name: 'friends',
+//   initialState: {
+//     entities: [],
+//     status: 'idle',
+//     error: null,
+//   },
+//   reducers: {},
+//   extraReducers: (builder) => {
+//     builder
+//       .addCase(getFriends.pending, (state) => {
+//         state.status = 'loading';
+//       })
+//       .addCase(getFriends.fulfilled, (state, action) => {
+//         state.status = 'succeeded';
+//         state.entities = action.payload;
+//       })
+//       .addCase(getFriends.rejected, (state, action) => {
+//         state.status = 'failed';
+//         state.error = action.error.message;
+//       })
+//       .addCase(followOtherUser.pending, (state) => {
+//         state.status = 'loading';
+//       })
+//       .addCase(followOtherUser.fulfilled, (state, action) => {
+//         state.status = 'succeeded';
+        
+//       })
+//       .addCase(followOtherUser.rejected, (state, action) => {
+//         state.status = 'failed';
+//         state.error = action.error.message;
+//       })
+//       .addCase(getAllFollowers.pending, (state) => {
+//         state.status = 'loading';
+//       })
+//       .addCase(getAllFollowers.fulfilled, (state, action) => {
+//         state.status = 'succeeded';
+        
+//         state.entities = action.payload;
+//       })
+//       .addCase(getAllFollowers.rejected, (state, action) => {
+//         state.status = 'failed';
+//         state.error = action.error.message;
+//       })
+//       .addCase(sendMessage.pending, (state) => {
+//         state.status = 'loading';
+//       })
+//       .addCase(sendMessage.fulfilled, (state, action) => {
+//         state.status = 'succeeded';
+        
+//       })
+//       .addCase(sendMessage.rejected, (state, action) => {
+//         state.status = 'failed';
+//         state.error = action.error.message;
+//       });
+//   },
+// });
+
+// export default friendsSlice.reducer;
+// export const selectAllFriends = (state) => state.friends.entities;
+// export const getFriendsStatus = (state) => state.friends.status;
+// export const getFriendsError = (state) => state.friends.error;

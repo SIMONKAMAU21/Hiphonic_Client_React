@@ -17,13 +17,28 @@ export const createPost = createAsyncThunk("post/create", async ({content,image}
             Authorization:`${token}`
         }
     };
-        
+    
     const response = await axios.post(POST_API, {content,image},config);
     return response.data;
   } catch (error) {
     return error.message;
   }
 });
+// const POST_API = ` http://localhost:3000/api/post`;
+export const getPosts = createAsyncThunk(
+  "post/get",
+  async()=>{
+    const token = localStorage.getItem('token')
+    const config={
+      headers:{
+        Authorization:`${token}`
+      }
+    }
+    const response= await axios.get(POST_API,config);
+     console.log(response)
+    return response.data
+  }
+);
 
 export const postSlice = createSlice({
   name: "posts",
@@ -39,6 +54,17 @@ export const postSlice = createSlice({
         state.posts = action.payload;
       })
       .addCase(createPost.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
+      .addCase(getPosts.pending, (state, action) => {
+        state.status = "loading";
+      })
+      .addCase(getPosts.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.posts = action.payload;
+      })
+      .addCase(getPosts.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       });
