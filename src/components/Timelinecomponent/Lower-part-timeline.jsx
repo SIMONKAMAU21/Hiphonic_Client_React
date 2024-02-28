@@ -1,15 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './Lower-part-timeline.scss'
 import Avatar from "../../assets/Avatar.png";
-import img1 from "../../assets/img1.png";
-import img from "../../assets/img.png";
-import book from "../../assets/book.png";
-import heart from "../../assets/heart.png";
-import message from "../../assets/message.png";
-import share from "../../assets/share.png";
-import icon  from '../../assets/icon.png'
+import { useDispatch, useSelector } from "react-redux";
+import { getPosts, selectPosts } from '../../features/Posts/PostSlice';
+import heart from '../../assets/heart.png';
+import message from '../../assets/message.png';
+import { useState } from "react";
+import CommentPost from "../../pages/Timeline/commentPost";
+import ReactDOM from "react-dom"; // Import ReactDOM here
 
 const LowerTimeline = () => {
+  const dispatch = useDispatch();
+  const posts = useSelector(selectPosts);
+
+  const [isCommentOpen, setCommentOpen] = useState(false);
+
+  const openComment = () => {
+    setCommentOpen(true);
+  }
+
+  const closeComment = () => {
+    setCommentOpen(false);
+  }
+
+  useEffect(() => {
+    dispatch(getPosts());
+  }, [dispatch]);
+
   return (
     <>
       <div className="wrap">
@@ -21,45 +38,40 @@ const LowerTimeline = () => {
           </div>
         </div>
         <div className="wrap-text">
-          <p>
-            Here are some photography works that i made on weekend with <br />
-            some of my friends,happy to that!
-          </p>
+          {Array.isArray(posts) && posts.map((post) => (
+            <p key={post.id}>{post.content}</p>
+          ))}
         </div>
-        <div className="images-3">
-          <div>
-            <img src={img} />
+        <div className="postholder1">
+          <div className="images-3">
+            {Array.isArray(posts) && posts.map((post) => (
+              <img src={post.image} key={post.id} />
+            ))}
           </div>
-          <div>
-            <img src={img1} />
+          <div className="wrap-likes">
+            <div className="div3">
+              <img src={heart} />
+              <span>2.6k</span>
+            </div>
+            <div className="div3" >
+              {isCommentOpen && ReactDOM.createPortal(
+                <CommentPost closeComment={closeComment} />, document.body
+              )}
+              <img src={message}  onClick={openComment}/>
+              <span> comments</span>
+            </div>
+            <div className="div3">
+              <span>201 share</span>
+            </div>
           </div>
-          <div>
-            <img src={book} />
+          <div className="wrap-message">
+            <div>
+              <input type="text" placeholder="write your message..." />
+            </div>
+            <div>
+              {/* Render message icon or button */}
+            </div>
           </div>
-        </div>
-        <div className="wrap-likes">
-          <div className="div3">
-            <img src={heart} alt="nopic" srcset="" />
-            <span>2.6k</span>
-          </div>
-          <div className="div3">
-            <img src={message} alt="nopic" srcset="" />
-            <span>297 comments</span>
-          </div>
-          <div className="div3">
-            <img src={share} alt="nopic" />
-            <span>201 share</span>
-          </div>
-        </div>
-        <div className="wrap-message">
-
-        <div>
-          <input type="text" placeholder="write your message..." />
-        </div>
-        <div>
-          <img src={icon}  />
-          {/* <img src={mood}  /> */}
-        </div>
         </div>
       </div>
     </>

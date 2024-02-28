@@ -10,7 +10,7 @@ import registrationReducer from '../features/Register/registerSlice'
 import friendsReducer from '../features/Friends/FriendsSlice'
 import profileReducer from '../pages/Profile/ProfileSlice'
 import postReducer from '../features/Posts/PostSlice'
-
+import CommentReducer from '../features/comments/commentSlice'
 
 export const store =configureStore({
     reducer:{
@@ -24,6 +24,7 @@ export const store =configureStore({
 
         profile:profileReducer,
 
-        posts:postReducer
+        posts:postReducer,
+        Comment:CommentReducer
     }
 })
