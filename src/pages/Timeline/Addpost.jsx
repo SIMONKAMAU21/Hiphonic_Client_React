@@ -47,37 +47,31 @@ const Addpost = ({ closeEdit }) => {
 
  const response= await dispatch(createPost({content,image}));
  console.log("response of post creation",response)
+ 
+ const handlePostSubmit =async (e) => {
+   e.preventDefault()
+
+   console.log(image, content)
+
+   const response = await dispatch(createPost({ content, image,post }));
+   console.log("response of post creation", response)
+
 
  }
    
  console.log(image,content)
   return (
     <>
- <div className="container5">
- <div className="postholder">
-    <div className="header">
-    <div className="side-profile">
-          <img src={Avatar} alt="nopic" />
-          <div className="side-text">
-            <h4>Angela lee</h4>
-            <p>@angalee</p>
-          </div>
-        </div>
-        <div className="close" onClick={closeEdit}>
-   <img src={close} />
-        </div>
-    </div>
+
+
     <form action="" onSubmit={handlePostSubmit}>
     <div className="textarea">
         <input  placeholder='what do you want to talk about'
            onChange={(e)=>{setContent(e.target.value)}}
         
-        
-        
-        
         />
 
-       
+
         
         </div>
         <input type="text" placeholder='photo url'
@@ -87,21 +81,15 @@ const Addpost = ({ closeEdit }) => {
         <div className="footer">
          <div className="btn">
             <button type='submit'>Post</button>
+         </div>
+         </div>
+      </form>
 
-   }, [status, dispatch])
 
-   const handlePostSubmit = async (e) => {
-      e.preventDefault()
-
-      console.log(image, content)
-
-      const response = await dispatch(createPost({ content, image,post }));
-      console.log("response of post creation", response)
-
-   }
-   console.log(image, content)
-   return (
-      <>
+   
+   
+   
+      
          <div className="container5">
             <div className="postholder">
                <div className="header">
@@ -140,8 +128,9 @@ const Addpost = ({ closeEdit }) => {
             </div>
          </div>
 
-      </>
+   </>
    )
+}
 }
 
 export default Addpost
