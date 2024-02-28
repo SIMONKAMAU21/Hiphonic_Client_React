@@ -1,50 +1,47 @@
 import React from 'react'
+import close from '../../assets/close.png'
 import Avatar from '../../assets/Avatar.png'
 import './Addpost.scss'
-import close from '../../assets/close.png'
+import './commentPost.scss'
 import { useSelector } from 'react-redux'
 import { getProfileError, getProfileStatus, getUserDetails, selectProfile } from '../Profile/ProfileSlice'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { createPost } from '../../features/Posts/PostSlice'
-// import { selectAllFriends } from '../../features/Friends/FriendsSlice'
+import { createcomment } from '../../features/comments/commentSlice'
 
-const Addpost = ({ closeEdit }) => {
+const CommentPost = ({ closeComment }) => {
+
    const dispatch = useDispatch();
    const profile = useSelector(selectProfile);
    const status = useSelector(getProfileStatus);
    const error = useSelector(getProfileError);
    const user_id = localStorage.getItem('user_id');
-   const post_id = localStorage.getItem('post_id')
    const [content, setContent] = useState('');
-   const [image, setImage] = useState('');
+   // const [image, setImage] = useState('');
 
-   // const friends=useSelector(selectAllFriends)
-   // const profile=useSelector(selectProfile);
-   // console.log(profile)
+
 
    console.log("user oif in the fetch", user_id)
 
    useEffect(() => {
       if (status === 'idle') {
          dispatch(getUserDetails(user_id))
-         //  dispatch(getFriends())
          console.log(profile)
       }
 
    }, [status, dispatch])
 
-   const handlePostSubmit = async (e) => {
+   const handleCommentSubmit = async (e) => {
       e.preventDefault()
 
-      console.log(image, content)
+      console.log( content)
 
-      const response = await dispatch(createPost({ content, image,post }));
+      const response = await dispatch(createcomment({content}));
       console.log("response of post creation", response)
 
    }
-   console.log(image, content)
+   console.log( content)
    return (
       <>
          <div className="container5">
@@ -57,26 +54,23 @@ const Addpost = ({ closeEdit }) => {
                         <p>@angalee</p>
                      </div>
                   </div>
-                  <div className="close" onClick={closeEdit}>
+                  <div className="close" onClick={closeComment}>
                      <img src={close} />
                   </div>
                </div>
-               <form action="" onSubmit={handlePostSubmit}>
-                  <div className="textarea">
+
+               <form action="" onSubmit={handleCommentSubmit}>
+                  <div className="commentArea">
                      <input placeholder='what do you want to talk about'
                         onChange={(e) => { setContent(e.target.value) }}
-
 
                      />
 
                   </div>
-                  <input type="text" placeholder='photo url'
-                     onChange={(e) => { setImage(e.target.value) }}
 
-                  />
                   <div className="footer">
-                     <div className="btn">
-                        <button type='submit'>Post</button>
+                     <div className="btne">
+                        <button type='submit'>comment</button>
                      </div>
                   </div>
                </form>
@@ -89,4 +83,6 @@ const Addpost = ({ closeEdit }) => {
    )
 }
 
-export default Addpost
+
+
+export default CommentPost

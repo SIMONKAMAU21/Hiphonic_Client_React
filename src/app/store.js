@@ -12,7 +12,7 @@ import profileReducer from '../pages/Profile/ProfileSlice'
 
 import messageReducer from '../components/MessagesComponent/messageSlice'
 import postReducer from '../features/Posts/PostSlice'
-
+import CommentReducer from '../features/comments/commentSlice'
 
 
 export const store =configureStore({
@@ -27,6 +27,10 @@ export const store =configureStore({
 
         profile:profileReducer,
         message:messageReducer,
-        posts:postReducer
+       
+
+
+        posts:postReducer,
+        Comment:CommentReducer
     }
 })
