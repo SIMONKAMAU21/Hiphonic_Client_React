@@ -47,7 +47,7 @@ const Friends = () => {
       }));
       setTypedMessage('');
       setModalOpen(false);
-      setSelectedFriend(null); // Reset selectedFriend after sending the message
+      setSelectedFriend(null);
     }
   };
 
@@ -55,7 +55,8 @@ const Friends = () => {
     <div className="friends">
       {status === 'loading' && <div>Loading...</div>}
       {status === 'failed' && <div>Error: {error}</div>}
-      {status === 'succeeded' &&
+      {status === 'succeeded' && 
+          friends&&      
         friends.map((friend, index) => (
           <div className="friend" key={index}>
             <div className="top">
