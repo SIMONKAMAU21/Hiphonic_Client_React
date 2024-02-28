@@ -31,6 +31,7 @@ const Register = () => {
 
   const onSubmit = (data) => {
     dispatch(registerUser(data));
+    console.log(data)
     navigate("/");
   };
 
