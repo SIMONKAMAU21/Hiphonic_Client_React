@@ -60,7 +60,6 @@ const Login = () => {
        <p>Please wait .........</p>
       </div>
 
-     
     </div>)
     
     
@@ -89,7 +88,7 @@ const Login = () => {
                 onChange={(e)=>{setPassword(e.target.value)}}
               />
               <p>{errors.password?.message}</p>
-            </div>
+            </div> 
           </div>
           <div className='btn'>
             <button type="submit">Login</button>
