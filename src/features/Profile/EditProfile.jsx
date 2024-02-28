@@ -2,13 +2,16 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createPortal } from 'react-dom';
 import '../Profile/EditProfile.scss'
-import { updateUserDetails } from '../../pages/Profile/ProfileSlice';
+import { getProfileStatus, updateUserDetails } from '../../pages/Profile/ProfileSlice';
+import { useSelector } from 'react-redux';
+import { CircleLoader } from 'react-spinners';
 
 const EditProfile = ({profile,closeModal}) => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [tagname, setTagname] = useState("");
     const dispatch = useDispatch();
+    const status=useSelector(getProfileStatus)
 
     console.log(profile)
     // const{username,email,tagname}=profile
@@ -19,6 +22,7 @@ const EditProfile = ({profile,closeModal}) => {
              console.log({ username, email,tagname });
              const response=await dispatch(updateUserDetails({ username, email,tagname }));
              console.log("response",response);
+
              closeModal()
 
         } catch (error) {
@@ -57,7 +61,12 @@ const EditProfile = ({profile,closeModal}) => {
                 </div>,
                 document.body
             )}
+
+            {status==='loading'&&<CircleLoader loading={true} size={150}/>  }
+                
+            
         </div>
+       
     );
 };
 
