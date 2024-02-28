@@ -22,147 +22,147 @@ import { getFriends, selectAllFriends } from '../../features/Friends/FriendsSlic
 
 const Profile = () => {
 
-    const dispatch=useDispatch();
-    const profile=useSelector(selectProfile);
-    const status=useSelector(getProfileStatus);
-    const error=useSelector(getProfileError);
-    const user_id=localStorage.getItem('user_id')
-    const friends=useSelector(selectAllFriends)
+    const dispatch = useDispatch();
+    const profile = useSelector(selectProfile);
+    const status = useSelector(getProfileStatus);
+    const error = useSelector(getProfileError);
+    const user_id = localStorage.getItem('user_id')
+    const friends = useSelector(selectAllFriends)
 
-    const accountDetails=[
+    const accountDetails = [
         {
-            avatar:Avatar,
-            full_name:'Angela Lee',
-            username:'@angela lee'
+            avatar: Avatar,
+            full_name: 'Angela Lee',
+            username: '@angela lee'
         }
     ]
 
-    const accountStats=[
+    const accountStats = [
         {
-            type:'Posts',
-            total:78
+            type: 'Posts',
+            total: 78
         },
         {
-            type:'FRIENDS',
-            total:friends.length
+            type: 'FRIENDS',
+            total: friends.length
         },
         {
-            type:'PHOTS',
-            total:2978
+            type: 'PHOTS',
+            total: 2978
         },
         {
-            type:'LIKES',
-            total:'102.68K'
+            type: 'LIKES',
+            total: '102.68K'
         },
 
     ]
 
 
 
-    
-const userDetails=[
-    {
-        profilePhoto:profilePhoto,
-        username:'Angela',
-        time:"56 min ago"
-    },
-    {
-        profilePhoto:profilePhoto,
-        username:'Angela',
-        time:"56 min ago"
-    }
-]
+
+    const userDetails = [
+        {
+            profilePhoto: profilePhoto,
+            username: 'Angela',
+            time: "56 min ago"
+        },
+        {
+            profilePhoto: profilePhoto,
+            username: 'Angela',
+            time: "56 min ago"
+        }
+    ]
 
 
- const actions=[
-    {
-        action_icon:heart,
-        action_type:'Likes'
-    },
+    const actions = [
+        {
+            action_icon: heart,
+            action_type: 'Likes'
+        },
 
-    {
-        action_icon:comments_icon,
-        action_type:'Comments'
-    },
+        {
+            action_icon: comments_icon,
+            action_type: 'Comments'
+        },
 
-    {
-        action_icon:star_icon,
-        action_type:'Activity'
-    },
- ]
-
-
-
-
- useEffect(()=>{
-    const user_id=localStorage.getItem('user_id')
-    console.log("user oif in the fetch",user_id)
-      if(status==='idle'){
-         dispatch(getUserDetails(user_id))
-        //  dispatch(getFriends())
-         console.log(profile)
-      }
-
- },[status, dispatch])
-
-console.log(profile)
-console.log(user_id)
-console.log("friends",friends)
+        {
+            action_icon: star_icon,
+            action_type: 'Activity'
+        },
+    ]
 
 
 
 
+    useEffect(() => {
+        const user_id = localStorage.getItem('user_id')
+        console.log("user oif in the fetch", user_id)
+        if (status === 'idle') {
+            dispatch(getUserDetails(user_id))
+            //  dispatch(getFriends())
+            console.log(profile)
+        }
+
+    }, [status, dispatch])
+
+    console.log(profile)
+    console.log(user_id)
+    console.log("friends", friends)
 
 
-    return(
+
+
+
+
+    return (
         <div className='content-container'>
             <div className='image-wrapper'>
                 <img src={backgroundImage} alt="" />
             </div>
             <div className='account-details'>
                 {
-                   
-                                <div className='avatar-name-div'><img className='avatar' src={Avatar} alt="" /><div className='content-user-name' >
-                                    <h5>{profile.username}</h5>
-                                    <p>{profile.tagname}</p>
 
-                                </div></div>
-                         
+                    <div className='avatar-name-div'><img className='avatar' src={Avatar} alt="" /><div className='content-user-name' >
+                        <h5>{profile.username}</h5>
+                        <p>{profile.tagname}</p>
+
+                    </div></div>
+
                 }
-                
+
                 <div className='account-stats'>
-                    
-                        {
-                            accountStats&&
-                                accountStats.map((item,index)=>{
-                                    const{type,total}=item
-                                        return(     
-                                            <div className='posts-number' key={index}>
-                                                <h5>{type}</h5>
-                                                 <p >{total}</p>
-                                             </div>
-                                                                                
-                                        )
-                                })
-                        }
+
+                    {
+                        accountStats &&
+                        accountStats.map((item, index) => {
+                            const { type, total } = item
+                            return (
+                                <div className='posts-number' key={index}>
+                                    <h5>{type}</h5>
+                                    <p >{total}</p>
+                                </div>
+
+                            )
+                        })
+                    }
                 </div>
-                
+
             </div>
             <div className='post-wrapper'>
                 <div className='left-post-wrapper'>
-                        <ProfileCompletion/>
-                        <Intro profile={profile}/>
-                        <PhotoSideBar/>
+                    <ProfileCompletion />
+                    <Intro profile={profile} />
+                    <PhotoSideBar />
 
                 </div>
 
                 <div className='right-post-wrapper'>
-                    <PostDiv/>
-                    <PostContent  userDetails={userDetails} actions={actions}/>
-                    <PostContent  userDetails={userDetails} actions={actions}/>
-                    <PostContent  userDetails={userDetails} actions={actions}/>
-                   
-                    
+                    <PostDiv />
+                    <PostContent userDetails={userDetails} actions={actions} />
+                    <PostContent userDetails={userDetails} actions={actions} />
+                    <PostContent userDetails={userDetails} actions={actions} />
+
+
                 </div>
             </div>
 
