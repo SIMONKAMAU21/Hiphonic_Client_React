@@ -4,13 +4,21 @@ import Avatar from "../../assets/Avatar.png";
 import { useDispatch, useSelector } from "react-redux";
 import { getPosts, selectPosts } from "../../features/Posts/PostSlice";
 import heart from "../../assets/heart.png";
-import message from "../../assets/message.png";
 import mood from '../../assets/mood-smile.png'
 import { CiPaperplane } from "react-icons/ci";
 import { AiFillMessage } from "react-icons/ai";
 import { FaShareAlt } from "react-icons/fa";
+import {useAddCommentMutation} from "../../features/comments/commentSlice"
 
 const LowerTimeline = () => {
+
+const [comment ,setComment]= useState('')
+const [addComment]=useAddCommentMutation()
+const handleAddComment=()=>{
+  addComment({postId:posts.id,comment})
+}
+
+
   const dispatch = useDispatch();
   const posts = useSelector(selectPosts);
 
@@ -63,9 +71,13 @@ const incrementLikes= ()=>{
               </div>
               <div className="wrap-message">
                 <div>
-                  <input type="text" placeholder="write your comment..." />
+                  <input type="text" placeholder="write your comment..." 
+                  value={comment}
+                  onChange={(e)=>setComment(e.target.value)}
+                  
+                  />
                 </div>
-                <CiPaperplane fontSize="26px" color="blue" />
+                <CiPaperplane fontSize="26px" color="blue" onClick={handleAddComment} />
                 <div>
                   <img src={mood} alt="mood" />
                 </div>
