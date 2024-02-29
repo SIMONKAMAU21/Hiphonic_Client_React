@@ -25,7 +25,7 @@ const Addpost = ({ closeEdit }) => {
   };
 
   return (
-    <>
+   
     <div className="post-wrap">  
         <div className="simon">
 
@@ -66,11 +66,12 @@ const Addpost = ({ closeEdit }) => {
             </div>
           </div>
 
+
         </form>
       </div>
+      </div>
+   
 
-    </div>
-</>
-  );
+)
 };
 export default Addpost;
