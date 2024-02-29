@@ -74,7 +74,7 @@ const Groups = () => {
                      
                    </div>
 
-{/*                     
+                    
                    <div className='group-card'>
                       <div className='group-name'>
                                  
@@ -95,7 +95,7 @@ const Groups = () => {
                         <span>Join group</span>
                       </div>
                      
-                   </div> */}
+                   </div>
                 
 
 
