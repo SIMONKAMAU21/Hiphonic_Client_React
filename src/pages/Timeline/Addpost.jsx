@@ -25,8 +25,10 @@ const Addpost = ({ closeEdit }) => {
   };
 
   return (
-    <div className="container5">
-      <div className="postholder">
+    <>
+    <div className="post-wrap">  
+        <div className="simon">
+
         <div className="header">
           <div className="side-profile">
             <img src={Avatar} alt="nopic" />
@@ -39,29 +41,36 @@ const Addpost = ({ closeEdit }) => {
             <img src={close} alt="close" />
           </div>
         </div>
+
+
         <form onSubmit={handlePostSubmit}>
+
           <div className="textarea">
             <input
-              placeholder="What do you want to talk about"
+              placeholder="What do you want to talk about..."
               value={content}
               onChange={(e) => setContent(e.target.value)}
             />
-          </div>
+
           <input
             type="text"
             placeholder="Photo URL"
             value={image}
             onChange={(e) => setImage(e.target.value)}
-          />
+            />
+            </div>
+
           <div className="footer">
             <div className="btn">
               <button type="submit">Post</button>
             </div>
           </div>
+
         </form>
       </div>
+
     </div>
+</>
   );
 };
-
 export default Addpost;
