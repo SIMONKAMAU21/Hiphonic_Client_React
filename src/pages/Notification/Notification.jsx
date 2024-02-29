@@ -9,16 +9,19 @@
 // import { useEffect } from "react";
 // import { ClipLoader } from "react-spinners";
 
-// const Notification = ({ handleOnClose, style }) => {
-//   const [state, dispatch] = useReducer(AppReducer, initialState);
-//   const {
-//     data: notifications,
-//     error,
-//     isLoading,
-//     isError,
-//     isFetching,
-//   } = useGetNotificationsQuery();
-//   const [notificationArray, setNotificaton] = useState([]);
+
+const Notification = ({ handleOnClose, style }) => {
+  const [state, dispatch] = useReducer(AppReducer, initialState);
+  const {
+    data: notifications,
+    error,
+    isLoading,
+    isError,
+    isFetching,
+  } = useGetNotificationsQuery({});
+  const [notificationArray, setNotificaton] = useState([]);
+
+
 
 //   useEffect(() => {
 //     //  const response= getNotifications()
