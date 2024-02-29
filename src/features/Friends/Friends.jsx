@@ -1,20 +1,20 @@
-// Friends.jsx
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Modal from "react-modal";
 import '../Friends/Friends.scss';
 import {
   selectAllFriends,
+  selectAllMessages,
   getFriends,
-  getFriendsStatus,
-  getFriendsError,
-  sendMessage,
+  getMessagesByUser,
 } from "../Friends/FriendsSlice";
 import Avatar from '../../assets/Avatar.png';
+import { PuffLoader } from "react-spinners";
 
 const Friends = () => {
   const dispatch = useDispatch();
   const friends = useSelector(selectAllFriends);
+  const messages = useSelector(selectAllMessages);
   const status = useSelector(getFriendsStatus);
   const error = useSelector(getFriendsError);
   const [selectedFriend, setSelectedFriend] = useState(null);
@@ -27,10 +27,11 @@ const Friends = () => {
     }
   }, [status, dispatch]);
 
-  const handleSendMessage = (friend) => {
+  const handleSendMessage = async (friend) => {
     setSelectedFriend(friend);
     localStorage.setItem('receiver_id', friend.user_id);
     setModalOpen(true);
+    await dispatch(getMessagesByUser(friend.user_id)); 
   };
 
   const handleModalClose = () => {
@@ -53,10 +54,9 @@ const Friends = () => {
 
   return (
     <div className="friends">
-      {status === 'loading' && <div>Loading...</div>}
+      {status === 'loading' && <PuffLoader/>}
       {status === 'failed' && <div>Error: {error}</div>}
-      {status === 'succeeded' && 
-          friends&&      
+      {status === 'succeeded' && friends &&
         friends.map((friend, index) => (
           <div className="friend" key={index}>
             <div className="top">
@@ -112,6 +112,16 @@ const Friends = () => {
                   <div className="modal-buttons">
                     <button onClick={handleSendClick}>Send</button>
                     <button onClick={handleModalClose}>Cancel</button>
+                  </div>
+
+                  {/* Display messages in the modal */}
+                  <div className="messages-container">
+                    {messages.map((message, index) => (
+                      <div key={index}>
+                        <p>{message.content}</p>
+                        {/* Add additional information as needed */}
+                      </div>
+                    ))}
                   </div>
                 </div>
               </Modal>

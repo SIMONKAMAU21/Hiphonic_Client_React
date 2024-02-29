@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import "./Modal.scss";
+import "./mod";
 
 const Modal = ({ isOpen, onRequestClose, onSend, friend }) => {
   const [messageContent, setMessageContent] = useState('');
