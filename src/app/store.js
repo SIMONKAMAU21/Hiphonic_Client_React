@@ -13,6 +13,8 @@ import profileReducer from '../pages/Profile/ProfileSlice'
 // import messageReducer from '../components/MessagesComponent/messageSlice'
 import postReducer from '../features/Posts/PostSlice'
 import CommentReducer from '../features/comments/commentSlice'
+import { notificationAPI } from "../features/Notifications/NotificationAPi";
+import { setupListeners } from "@reduxjs/toolkit/query";
 
 
 export const store =configureStore({
@@ -31,6 +33,13 @@ export const store =configureStore({
 
 
         posts:postReducer,
-        Comment:CommentReducer
-    }
+        Comment:CommentReducer,
+
+        [notificationAPI.reducerPath]:notificationAPI.reducer
+
+        
+    },
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(notificationAPI.middleware),
 })
+
+setupListeners(store.dispatch)
