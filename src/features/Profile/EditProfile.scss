@@ -1,4 +1,4 @@
-/* Style for the modal container */
+
 .update-form-wrapper {
     position: fixed;
     top: 0;
@@ -11,7 +11,7 @@
     align-items: center;
   }
   
-  /* Style for the modal content */
+  
   .update-form{
     background-color: white;
     width:60%;
@@ -23,13 +23,13 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
-  /* Style for the modal title */
+
   .modal-title {
     font-size: 20px;
     margin-bottom: 10px;
   }
   
-  /* Style for the input fields */
+  
   .form-input {
     width: 90%;
     margin-bottom: 15px;
@@ -41,7 +41,7 @@
     border: none;
     outline:none;
   }
-  /* Style for the submit button */
+  
   .modal-submit {
     padding: 10px 20px;
     background-color: #007bff;
@@ -51,7 +51,7 @@
     cursor: pointer;
   }
   
-  /* Style for the close button */
+  
   .modal-close {
     position: absolute;
     top: 10px;

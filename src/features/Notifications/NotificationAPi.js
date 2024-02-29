@@ -4,6 +4,8 @@ export const getTokenFromLocalStorage = () => {
 };
 
 
+
+
 export const notificationAPI=createApi({
     reducerPath:'notificationApi',
     baseQuery:fetchBaseQuery({baseUrl:`http://localhost:3000/`}),
@@ -14,7 +16,7 @@ export const notificationAPI=createApi({
                 url:'notification',
                 method:'GET',
                 headers: {
-                    Authorization: ` ${getTokenFromLocalStorage()}`,
+                    Authorization:` ${getTokenFromLocalStorage()}`,
                 }
 
             }),
