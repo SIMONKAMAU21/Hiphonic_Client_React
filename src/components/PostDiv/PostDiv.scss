@@ -31,14 +31,11 @@
     
     .actions{
          display: flex;
-         flex-direction: column;
-         border: 2px solid;
         .live-video{
             display: flex;
             align-items: center;
             padding:10px;
             gap:12px;
-            border: 2px solid red;
         }
         img{
             width:20px;
