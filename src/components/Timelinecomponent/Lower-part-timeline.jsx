@@ -8,25 +8,29 @@ import mood from '../../assets/mood-smile.png'
 import { CiPaperplane } from "react-icons/ci";
 import { AiFillMessage } from "react-icons/ai";
 import { FaShareAlt } from "react-icons/fa";
-import {useAddCommentMutation} from "../../features/comments/commentSlice"
+import { useAddCommentMutation } from "../../features/comments/commentSlice";
 
 const LowerTimeline = () => {
-
-const [comment ,setComment]= useState('')
-const [addComment]=useAddCommentMutation()
-const handleAddComment=()=>{
-  addComment({postId:posts.id,comment})
-}
-
-
+  const [comment, setComment] = useState('');
+  const [likes, setLikes] = useState(0);
+  
   const dispatch = useDispatch();
   const posts = useSelector(selectPosts);
-
+  
   const [currentDate, setCurrentDate] = useState(new Date().toLocaleDateString());
-const[likes,setLikes]= useState(0)
-const incrementLikes= ()=>{
-  setLikes(likes + 1);
-}
+  
+  const [addComment] = useAddCommentMutation();
+  
+  const handleAddComment = (id) => {
+    return () => {
+      addComment({ post_id: id, comment });
+    };
+  };
+
+  const incrementLikes = () => {
+    setLikes(likes + 1);
+  };
+
   useEffect(() => {
     dispatch(getPosts());
     // Update current date every midnight
@@ -45,7 +49,6 @@ const incrementLikes= ()=>{
             <div className="post" key={post.id}>
               <div className="side-profile">
                 <img src={Avatar} alt="nopic" />
-
                 <div className="side-text">
                   <h4>Angela lee</h4>
                   <p>{currentDate}</p>
@@ -57,27 +60,32 @@ const incrementLikes= ()=>{
               </div>
               <div className="wrap-likes">
                 <div className="div3">
-                  <img src={heart} alt="heart"onClick={incrementLikes} />
+                  <img src={heart} alt="heart" onClick={incrementLikes} />
                   <span>{likes} </span>
                 </div>
                 <div className="div3">
-                <AiFillMessage fontSize="26px" color="blue" />
+                  <AiFillMessage fontSize="26px" color="blue" />
                   <span> comments</span>
                 </div>
                 <div className="div3">
-                <FaShareAlt fontSize="26px"/>
+                  <FaShareAlt fontSize="26px" />
                   <span>201 share</span>
                 </div>
               </div>
               <div className="wrap-message">
                 <div>
-                  <input type="text" placeholder="write your comment..." 
-                  value={comment}
-                  onChange={(e)=>setComment(e.target.value)}
-                  
+                  <input
+                    type="text"
+                    placeholder="write your comment..."
+                    value={comment}
+                    onChange={(e) => setComment(e.target.value)}
                   />
                 </div>
-                <CiPaperplane fontSize="26px" color="blue" onClick={handleAddComment} />
+                <CiPaperplane
+                  fontSize="26px"
+                  color="blue"
+                  onClick={handleAddComment(post.post_id)}
+                />
                 <div>
                   <img src={mood} alt="mood" />
                 </div>

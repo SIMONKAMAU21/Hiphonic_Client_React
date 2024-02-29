@@ -1,5 +1,7 @@
 .post-wrap {
-background: linear-gradient(red ,blue);
+// background: linear-gradient(red ,blue);
+background-color:rgba(0, 0, 0, 0.26);
+border: 2px solid red;
 height: 100%;
 width: 100%;
   .simon {
@@ -11,7 +13,7 @@ width: 100%;
     top: 50%;
     left: 45%;
     transform: translate(-50%, -50%);
-    height: 50%;
+    height: 60%;
     border-radius: 10px;
     border-top: 2px solid rgb(8, 151, 176);
 
@@ -63,8 +65,7 @@ width: 100%;
         box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.26);
         top: 0;
         left: 0;
-        height: 40%;
-      //   background-color: rgba(230, 230, 230, 0.898);
+        height: 38%;
         outline: none;
         border-top: 2px solid rgb(41, 4, 251);
         border-radius: 10px;
