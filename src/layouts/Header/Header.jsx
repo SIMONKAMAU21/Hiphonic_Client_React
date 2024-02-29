@@ -10,7 +10,7 @@ import { IoIosMenu } from "react-icons/io";
 import { useReducer } from 'react';
 import { useState } from 'react';
 import RightSideBarMobile from '../RightSideBar-mobile/RightSideBarMobile';
-import Notification from '../../pages/Notification/Notification'
+// import Notification from '../../pages/Notification/Notification'
 import SideMenu from '../../layouts/SideMenu/SideMenu';
 import { useGetNotificationsQuery } from '../../features/Notifications/NotificationAPi';
 
@@ -21,10 +21,11 @@ const Header = () => {
 
 
 
-  const {data:notifications, error, isLoading, isError, isFetching } = useGetNotificationsQuery();
+  // const {data:notifications, error, isLoading, isError, isFetching } = useGetNotificationsQuery();
     const [isOpen, setOpen] = useState(false);
     const [state, dispatch] = useReducer(AppReducer, initialState);
-    console.log(notifications, "from notifications")
+    
+    // console.log(notifications, "from notifications")
     const handleNavigationOpen = () => {
         dispatch({ type: "SET_NAVIGATION_OPEN", payload: true });
         console.log("state set to true");
@@ -104,16 +105,16 @@ const Header = () => {
         alt="noti1fication"
         onClick={handleNavigationOpen}
       />
-      <div className='notifications-counter'>{notifications}</div>
+      <div className='notifications-counter'></div>
 
       <img src={Avatar} alt="avatar" />
     </div>
   </div>
 
 <div>
-  {state.isNavigationOpen && (
+  {/* {state.isNavigationOpen && (
     <Notification handleOnClose={handleNavigationClose} style={{}} />
-  )}
+  )} */}
 </div>
 {/* <div> */}
   {

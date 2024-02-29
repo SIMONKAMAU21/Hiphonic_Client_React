@@ -17,6 +17,7 @@ import CommentReducer, { commentSlice } from '../features/comments/commentSlice'
 import { notificationAPI } from "../features/Notifications/NotificationAPi";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { configureStore } from '@reduxjs/toolkit';
+import { photosApi } from '../features/photos/photosApi';
 
 
 export const store =configureStore({
@@ -37,11 +38,13 @@ export const store =configureStore({
         posts:postReducer,
         [commentSlice.reducerPath]:commentSlice.reducer,
 
-        [notificationAPI.reducerPath]:notificationAPI.reducer
-
+        [notificationAPI.reducerPath]:notificationAPI.reducer,
+        
+        [photosApi.reducerPath]:photosApi.reducer
         
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(notificationAPI.middleware),
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(photosApi.middleware),
 })
 
 setupListeners(store.dispatch)

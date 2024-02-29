@@ -36,3 +36,4 @@ export const commentSlice = createApi({
 });
 
 export const { useAddCommentMutation } = commentSlice;
+export default commentSlice
