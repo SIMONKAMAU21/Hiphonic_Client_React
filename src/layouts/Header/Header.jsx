@@ -104,7 +104,7 @@ const Header = () => {
         alt="noti1fication"
         onClick={handleNavigationOpen}
       />
-      <div className='notifications-counter'>{notifications.length}</div>
+      <div className='notifications-counter'>{notifications}</div>
 
       <img src={Avatar} alt="avatar" />
     </div>
