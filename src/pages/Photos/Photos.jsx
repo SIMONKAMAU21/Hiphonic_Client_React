@@ -84,7 +84,7 @@ const Photos = () => {
               const{photo_url}=photo
               return(
                 <div key={index}>
-                    <img src={photo_url} alt="" />
+                    <img src={photo_url} alt="photo image" />
                 </div>
               )
           })
