@@ -17,7 +17,7 @@ const Notification = ({ handleOnClose, style }) => {
     isLoading,
     isError,
     isFetching,
-  } = useGetNotificationsQuery();
+  } = useGetNotificationsQuery({});
   const [notificationArray, setNotificaton] = useState([]);
 
   useEffect(() => {

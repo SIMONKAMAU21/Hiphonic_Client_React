@@ -13,7 +13,7 @@ import profileReducer from '../pages/Profile/ProfileSlice'
 
 // import messageReducer from '../components/MessagesComponent/messageSlice'
 import postReducer from '../features/Posts/PostSlice'
-import CommentReducer, { commentSlice } from '../features/comments/commentSlice'
+import { commentSlice } from '../features/comments/commentSlice'
 import { notificationAPI } from "../features/Notifications/NotificationAPi";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { configureStore } from '@reduxjs/toolkit';
