@@ -4,7 +4,7 @@ import Avatar6 from "../../assets/Avatar(14).png";
 import Avatar5 from "../../assets/Avatar(15).png";
 import Avatar1 from "../../assets/Avatar(13).png";
 import Avatar2 from "../../assets/Avatar(10).png";
-// import Avatar3 from "../../assets/Avatar(11).png";
+import Avatar3 from "../../assets/Avatar(11).png";
 import Avatar4 from "../../assets/Avatar(12).png";
 
 const UpperTimeline = () => {
