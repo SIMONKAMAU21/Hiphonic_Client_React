@@ -1,38 +1,40 @@
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+const token = localStorage.getItem('token')
+console.log(token)
+export const EventApi = createApi({
+  reducerPath: "Events",
 
-import { createSlice } from '@reduxjs/toolkit';
+  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3000/" }),
+  endpoints: (builder) => ({
+    getAllEvents: builder.query({
+      query: () => ({
+        url:`event`,
+        method:"GET"
+   
 
-const initialState = {
-  events: [],
-  selectedEvent: null,
-  registeredAttendees: [],
-  selectedDate: null,
-};
-
-const eventsSlice = createSlice({
-  name: 'events',
-  initialState,
-  reducers: {
-    setEvents: (state, action) => {
-      state.events = action.payload;
-    },
-    setSelectedEvent: (state, action) => {
-      state.selectedEvent = action.payload;
-    },
-    setRegisteredAttendees: (state, action) => {
-      state.registeredAttendees = action.payload;
-    },
-    setSelectedDate: (state, action) => {
-      state.selectedDate = action.payload;
-    },
-  },
+      })
+    }),
+    addEvent: builder.mutation({
+      query: (event) => ({
+        url: `event`,
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+        body: event, 
+       
+      })
+    })
+    
+  })
 });
+export const {useGetAllEventsQuery,useAddEventMutation} = EventApi;
 
-export const {
-  setEvents,
-  setSelectedEvent,
-  setRegisteredAttendees,
-  setSelectedDate,
-} = eventsSlice.actions;
 
-export default eventsSlice.reducer;
+
+
+
+
+
+

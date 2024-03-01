@@ -23,15 +23,16 @@ export const commentSlice = createApi({
   }),
   endpoints: (builder) => ({
     addComment: builder.mutation({
-      query: ({ post_id, comment }) => ({
+      query: ({ post_id, content }) => ({
         url: `/comment/${post_id}`,
         headers:{
           Authorization: `${token}`
         },
         method: 'POST',
-        body: { comment }
+        body: {content,post_id }
       }),
     }),
+
   }),
 });
 

@@ -23,7 +23,7 @@ const LowerTimeline = () => {
   
   const handleAddComment = (id) => {
     return () => {
-      addComment({ post_id: id, comment });
+      addComment({ post_id: id, comment:content});
     };
   };
 

@@ -28,6 +28,7 @@ const Addpost = ({ closeEdit }) => {
     <>
     <div className="post-wrap">  
         <div className="simon">
+          
 
         <div className="header">
           <div className="side-profile">
