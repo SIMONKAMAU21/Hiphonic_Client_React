@@ -11,7 +11,7 @@ import registrationReducer from '../features/Register/registerSlice'
 import friendsReducer from '../features/Friends/FriendsSlice'
 import profileReducer from '../pages/Profile/ProfileSlice'
 
-// import messageReducer from '../components/MessagesComponent/messageSlice'
+
 import postReducer from '../features/Posts/PostSlice'
 import { commentSlice } from '../features/comments/commentSlice'
 import { notificationAPI } from "../features/Notifications/NotificationAPi";
@@ -31,9 +31,6 @@ export const store =configureStore({
         registration:registrationReducer,
 
         profile:profileReducer,
-        // message:messageReducer,
-       
-
 
         posts:postReducer,
         [commentSlice.reducerPath]:commentSlice.reducer,
