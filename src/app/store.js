@@ -18,6 +18,7 @@ import { notificationAPI } from "../features/Notifications/NotificationAPi";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { configureStore } from '@reduxjs/toolkit';
 import { photosApi } from '../features/photos/photosApi';
+import { EventApi } from '../features/Events/EventsSlice';
 
 
 export const store =configureStore({
@@ -37,11 +38,15 @@ export const store =configureStore({
 
         [notificationAPI.reducerPath]:notificationAPI.reducer,
         
-        [photosApi.reducerPath]:photosApi.reducer
+        [photosApi.reducerPath]:photosApi.reducer,
+        [EventApi.reducerPath]:EventApi.reducer
         
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(notificationAPI.middleware),
+
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(photosApi.middleware),
+
+    middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(EventApi.middleware)
 })
 
 setupListeners(store.dispatch)
