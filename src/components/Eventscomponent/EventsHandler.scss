@@ -1,13 +1,7 @@
 .Eventscontainer {
-  // display: grid;
-  // grid-template-columns: repeat(2, 1fr);
-  // grid-template-rows: repeat(1, 1fr);
   display:flex;
   flex-wrap: wrap;
-  
   overflow-y: scroll;
-
-
   height: 100%;
   .event-card {
     background: #ffffff;
@@ -17,16 +11,39 @@
     padding: 20px;
     border-radius: 10px;
     width: 40%;
-    // border:2px solid red;
     margin: 10px 10px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
     height: 481px;
+    .by-date {
+      display: flex;
+      width: 100%;
+      height: 70px;
+      justify-content: space-between;
+      align-items: center;
+      .title-by {
+        margin: 10px 10px;
+        h3 {
+          color: black;
+          font-size: 16px;
+          font-weight: 500;
+        }
 
+        img {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
     .event-footer {
       display: flex;
       flex-direction: column;
       font-size: 12px;
       margin-top: 0.9rem;
+      width: 100%;
+      
+      p{
+        font-size: 18px;
+      }
 
       button {
         width: 100%;
@@ -75,39 +92,12 @@
       }
     }
 
-    .by-date {
-      display: flex;
-      flex-direction: row;
-      margin-top: 1rem;
-      width: 100%;
-      height: 41px;
-      justify-content: space-between;
-      font-size: 14px;
-      background-color: white;
-      align-items: center;
-      overflow: hidden;
-      border-radius: 10px;
-      .title-by {
-        margin: 10px 10px;
-        display: flex;
-        flex-direction: column;
-        font-size: 12px;
-        color: #64748b;
-        line-height: 1px;
-
-        h3 {
-          color: black;
-        }
-
-        img {
-          width: 20px;
-          height: 20px;
-        }
-      }
+  
     }
 
     .event-image {
       width: 100%;
+
 
       img {
         max-width: 100%;
@@ -116,17 +106,15 @@
       }
     }
   }
-}
+
 @media screen and (max-width: 1024px) {
   .Eventscontainer {
-    border: 2px solid red;
     .event-card {
-      border: 2px solid black;
       height: 465px;
       width: 308px;
 
       .event-image {
-        border: 2px solid red;
+
 
         img {
           height: 160px;
@@ -141,7 +129,7 @@
 
         line-height: 1px;
         .title-by {
-          border: 2px solid red;
+      
           width: 119px;
 
           line-height: 1px;
