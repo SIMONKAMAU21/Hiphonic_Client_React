@@ -1,7 +1,7 @@
 // Modal.jsx
 import React from 'react';
 import ReactDOM from 'react-dom';
-import '../Modal/Modal.scss';
+import './Modal.scss';
 
 const Modal = ({ children, onClose }) => {
   return ReactDOM.createPortal(

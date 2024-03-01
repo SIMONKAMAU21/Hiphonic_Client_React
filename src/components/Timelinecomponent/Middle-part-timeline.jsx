@@ -9,6 +9,7 @@ import GROUPS from "../../assets/GROUPS.png";
 import PHOTOS from "../../assets/PHOTOS.png";
 
 function MiddleTimeline() {
+  
   const [isEditOpen, setEditOpen] = useState(false);
 
   const openEdit = () => {
@@ -38,7 +39,7 @@ function MiddleTimeline() {
         <input type="text" placeholder="whats on your mind?" onClick={openEdit} />
         <div className="input-icons">
           <img src={mood} alt="nopic" />
-          {/* <img src={} alt="nopic"  /> */}
+       
           {isEditOpen &&
             ReactDOM.createPortal(
               <Addpost closeEdit={closeEdit} />, // Pass closeEdit function as prop
