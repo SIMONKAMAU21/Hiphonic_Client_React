@@ -3,7 +3,7 @@ import "../ContentLayout/ContentLayout.scss"
 import Content from "../../layouts/Content/Content"
 import RightSidebar from "../../layouts/RightSideBar/RightSidebar"
 import SideMenu from "../../layouts/SideMenu/SideMenu"
-import Notification from "../../pages/Notification/Notification"
+// import Notification from "../../pages/Notification/Notification"
 import { useReducer } from "react"
 import AppReducer, { initialState } from "../../reducers/AppReducers"
 import { Routes } from "react-router-dom"
@@ -32,9 +32,9 @@ if(state.isNavigationOpen){
             <RightSidebar/>
             
           <div>
-                {state.isNavigationOpen &&(
+                {/* {state.isNavigationOpen &&(
                     <Notification handleOnClose={handleNavigationClose}/>
-                )}
+                )} */}
             </div> 
 
         </div>
