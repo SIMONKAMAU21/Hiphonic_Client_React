@@ -42,11 +42,12 @@ export const store =configureStore({
         [EventApi.reducerPath]:EventApi.reducer
         
     },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(notificationAPI.middleware),
-
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(photosApi.middleware),
-
-    middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(EventApi.middleware)
+    middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(
+        notificationAPI.middleware,
+        photosApi.middleware,
+        EventApi.middleware
+    ),
 })
 
 setupListeners(store.dispatch)
